@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PanieFXMLController">
+   <children>
+      <Button layoutX="300.0" layoutY="267.0" mnemonicParsing="false" onAction="#ajouterCart" prefHeight="25.0" prefWidth="117.0" text="Ajouter Produit" />
+      <Button layoutX="449.0" layoutY="267.0" mnemonicParsing="false" onAction="#commanderproduit" onKeyPressed="#gotoFacture" prefHeight="25.0" prefWidth="100.0" text="commander" />
+      <TextField fx:id="tfnbreproduit" layoutX="122.0" layoutY="254.0" onMousePressed="#TotalnbrArticle" />
+      <TextField fx:id="tftotalprix" layoutX="122.0" layoutY="310.0" onAction="#TotalPrixP" onMousePressed="#TotalPrixP" />
+      <Label layoutX="15.0" layoutY="258.0" text="Nombre article:" />
+      <Label layoutX="30.0" layoutY="314.0" text="Total prix:" />
+      <Label fx:id="verif" layoutX="328.0" layoutY="335.0" />
+      <TableView fx:id="tftablePlants" layoutX="18.0" layoutY="14.0" onKeyPressed="#gotosupp" prefHeight="200.0" prefWidth="554.0">
+        <columns>
+          <TableColumn fx:id="tf_Idplant" prefWidth="63.0" text="Id_Plant" />
+            <TableColumn fx:id="tf_name" prefWidth="100.0" text="NamePlante" />
+            <TableColumn fx:id="tfType" prefWidth="55.0" text="Type" />
+            <TableColumn fx:id="tf_quantity" minWidth="3.0" prefWidth="79.0" text="Quantity" />
+            <TableColumn fx:id="tf_categorie" minWidth="0.0" prefWidth="78.0" text="Categorie" />
+            <TableColumn fx:id="tf_Description" prefWidth="107.0" text="Description" />
+            <TableColumn fx:id="tf_price" prefWidth="71.0" text="Price" />
+        </columns>
+      </TableView>
+      <Button layoutX="359.0" layoutY="340.0" mnemonicParsing="false" onAction="#supp_pdt_cart" prefHeight="25.0" prefWidth="163.0" text="Supprimer du chariot" />
+   </children>
+</AnchorPane>
