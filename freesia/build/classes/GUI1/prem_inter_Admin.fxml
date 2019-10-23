@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI1.Prem_inter_AdminController">
+   <children>
+      <Label layoutX="236.0" layoutY="33.0" text="MyAdmin_Space" />
+      <Button layoutX="70.0" layoutY="87.0" mnemonicParsing="false" onAction="#recAd" text="Reclamations" />
+      <Button layoutX="70.0" layoutY="160.0" mnemonicParsing="false" onAction="#ajoutuser" text="Demandes d'ajout" />
+      <Button layoutX="88.0" layoutY="223.0" mnemonicParsing="false" text="Publications" />
+      <Button layoutX="102.0" layoutY="293.0" mnemonicParsing="false" text="Statistiques" />
+      <Button layoutX="393.0" layoutY="128.0" mnemonicParsing="false" onAction="#ajouterAdmin" text="Ajouter Admin" />
+   </children>
+</AnchorPane>
