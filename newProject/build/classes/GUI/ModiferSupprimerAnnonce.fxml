@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="660.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModiferSupprimerAnnonceController">
+    <stylesheets>
+        <URL value="@modifersupprimerannonce.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="320.0" layoutY="85.0" prefHeight="18.0" prefWidth="47.0" text="Titre  :" />
+      <Label layoutX="358.0" layoutY="189.0" text="Date  :" />
+      <Label layoutX="28.0" layoutY="180.0" prefHeight="18.0" prefWidth="99.0" text="Description  :" />
+      <TextField fx:id="Titre" layoutX="383.0" layoutY="81.0" prefHeight="26.0" prefWidth="239.0" />
+      <TextArea fx:id="Description" layoutX="120.0" layoutY="180.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="366.0" layoutY="270.0" prefHeight="18.0" prefWidth="69.0" text="Picture  :" />
+      <Button layoutX="187.0" layoutY="409.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="99.0" text="update" />
+      <Button layoutX="358.0" layoutY="410.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="99.0" text="Delete" />
+      <DatePicker fx:id="tfDate" layoutX="409.0" layoutY="185.0" />
+      <TextField fx:id="Id" layoutX="88.0" layoutY="82.0" onAction="#getInformation" />
+      <Label layoutX="28.0" layoutY="85.0" prefHeight="18.0" prefWidth="47.0" text="ID" />
+      <Label fx:id="verif" layoutX="409.0" layoutY="324.0" prefHeight="18.0" prefWidth="99.0" />
+      <Button layoutX="516.0" layoutY="411.0" mnemonicParsing="false" onAction="#ExitUpdate" prefHeight="26.0" prefWidth="99.0" text="Exit" />
+   </children>
+</AnchorPane>

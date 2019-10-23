@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
+    <stylesheets>
+        <URL value="@login.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="228.0" layoutY="270.0" mnemonicParsing="false" onAction="#LogIn" prefHeight="26.0" prefWidth="141.0" text="Valider" />
+      <Label layoutX="141.0" layoutY="107.0" text="E-mail :" />
+      <Label layoutX="141.0" layoutY="178.0" text="Password :" />
+      <TextField fx:id="Email" layoutX="225.0" layoutY="103.0" />
+      <PasswordField fx:id="Password" layoutX="224.0" layoutY="174.0" />
+      <Label fx:id="verif" layoutX="244.0" layoutY="227.0" />
+      <Label layoutX="191.0" layoutY="310.0" text="I dont have a count !" />
+      <Label layoutX="314.0" layoutY="310.0" onDragDetected="#gotoAjouterUser" onMouseClicked="#gotoAjouterUser" text="create one" textFill="#222e94" />
+   </children>
+</AnchorPane>

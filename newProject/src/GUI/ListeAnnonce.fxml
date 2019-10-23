@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="Delete" onDragDetected="#showAnnonce" prefHeight="484.0" prefWidth="874.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeAnnonceController">
+    <stylesheets>
+        <URL value="@listeannonce.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="liste" layoutX="24.0" layoutY="40.0" onKeyPressed="#Modifier2Annonce" onMouseClicked="#Modifier1Annonce" onMousePressed="#ModifierAnnonce" prefHeight="335.0" prefWidth="531.0">
+        <columns>
+          <TableColumn fx:id="CDescription" prefWidth="134.39996337890625" text="Description" />
+            <TableColumn fx:id="CTitre" prefWidth="53.5999755859375" text="Titre" />
+            <TableColumn fx:id="CDate" prefWidth="120.0" text="Date" />
+            <TableColumn fx:id="CPicture" prefWidth="145.60003662109375" text="Picture" />
+        </columns>
+      </TableView>
+      <Button fx:id="gotoAjouter" layoutX="137.0" layoutY="398.0" mnemonicParsing="false" onAction="#gotoAjouter" prefHeight="26.0" prefWidth="84.0" text="Ajouter">
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor></Button>
+      <Label fx:id="TestLabel" layoutX="521.0" layoutY="401.0" prefHeight="18.0" prefWidth="107.0" />
+      <Button layoutX="282.0" layoutY="398.0" mnemonicParsing="false" onAction="#refrechListe" prefHeight="26.0" prefWidth="84.0" text="refrech">
+         <cursor>
+            <Cursor fx:constant="WAIT" />
+         </cursor></Button>
+      <Button layoutX="422.0" layoutY="398.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="26.0" prefWidth="84.0" scaleShape="false" text="return">
+         <cursor>
+            <Cursor fx:constant="W_RESIZE" />
+         </cursor></Button>
+      <Button layoutX="562.0" layoutY="399.0" mnemonicParsing="false" onAction="#Deletefromtree" prefHeight="26.0" prefWidth="75.0" text="Delete" />
+      <Button layoutX="661.0" layoutY="259.0" mnemonicParsing="false" onAction="#updatefromtree" prefHeight="26.0" prefWidth="167.0" text="show    Annonce" />
+      <Label fx:id="verif" layoutX="583.0" layoutY="42.0" prefHeight="18.0" prefWidth="107.0" text="New Description" />
+      <TextField fx:id="Cdiscription11" layoutX="711.0" layoutY="39.0" />
+      <TextField fx:id="Ctitre11" layoutX="711.0" layoutY="86.0" />
+      <TextField fx:id="CPicture11" layoutX="724.0" layoutY="208.0" />
+      <DatePicker fx:id="CDate11" layoutX="711.0" layoutY="144.0" prefHeight="26.0" prefWidth="159.0" />
+      <Button layoutX="665.0" layoutY="305.0" mnemonicParsing="false" onAction="#Updatefinal" prefHeight="26.0" prefWidth="167.0" text="Update" />
+      <Label fx:id="verif1" layoutX="583.0" layoutY="211.0" prefHeight="18.0" prefWidth="107.0" text="New Picture" />
+      <Label fx:id="verif11" layoutX="583.0" layoutY="148.0" prefHeight="18.0" prefWidth="107.0" text="New Date" />
+      <Label fx:id="verif111" layoutX="583.0" layoutY="89.0" prefHeight="18.0" prefWidth="107.0" text="New Titre" />
+   </children>
+</AnchorPane>

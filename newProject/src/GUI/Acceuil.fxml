@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="gotoAnnonce" prefHeight="573.0" prefWidth="712.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AcceuilController">
+    <stylesheets>
+        <URL value="@acceuil.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="292.0" layoutY="146.0" mnemonicParsing="false" onAction="#gotoAnnonce" prefHeight="26.0" prefWidth="106.0" text="Ajouter Annonce" />
+      <Button fx:id="gotoListe" layoutX="290.0" layoutY="229.0" mnemonicParsing="false" onAction="#gotoListe" prefHeight="26.0" prefWidth="163.0" text="lister les annonce" />
+   </children>
+</AnchorPane>
