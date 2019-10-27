@@ -85,11 +85,11 @@ public class Company_addController implements Initializable {
     @FXML
     private void suppcomptecompany(ActionEvent event) throws SQLException, IOException {
        Company c = new Company();
-        c.setIdCompany(Integer.valueOf(tfidcompany.getText()));
+        c.setNameCompany(tfnomcompany.getText());
         
         ServiceCompany sc;
         sc = new ServiceCompany();
-        sc.supprimerCompany(c.getIdCompany());
+        sc.supprimerCompany(c.getNameCompany());
          Parent root = FXMLLoader.load(getClass().getResource("../GUI/Compte_company_supprimé.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();

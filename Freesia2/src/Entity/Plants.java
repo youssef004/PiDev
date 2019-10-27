@@ -18,8 +18,9 @@ public class Plants {
     private String CategoryPlant;
     private Float PricePlant;
     private String DescriptionPlant;
+    private String PicturePlant;
 
-    public Plants(int IdPlant, String NamePlant, String TypePlant, int QuantityPlant, String CategoryPlant, Float PricePlant, String DescriptionPlant) {
+    public Plants(int IdPlant, String NamePlant, String TypePlant, int QuantityPlant, String CategoryPlant, Float PricePlant, String DescriptionPlant, String PicturePlant) {
         this.IdPlant = IdPlant;
         this.NamePlant = NamePlant;
         this.TypePlant = TypePlant;
@@ -27,7 +28,19 @@ public class Plants {
         this.CategoryPlant = CategoryPlant;
         this.PricePlant = PricePlant;
         this.DescriptionPlant = DescriptionPlant;
+        this.PicturePlant = PicturePlant;
     }
+    
+
+    public String getPicturePlant() {
+        return PicturePlant;
+    }
+
+    public void setPicturePlant(String PicturePlant) {
+        this.PicturePlant = PicturePlant;
+    }
+
+  
 
     public int getIdPlant() {
         return IdPlant;

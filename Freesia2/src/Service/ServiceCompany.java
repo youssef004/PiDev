@@ -33,13 +33,13 @@ public class ServiceCompany {
         }
     }
      public void ajouterCompany(Company c) throws SQLException {      
-      String requete="INSERT INTO `company` (`IdCompany`, `NameCompany`, `EmailCompany`, `PasswordCompany`, `NumberCompany`, `AddressCompany`) VALUES ('" +c.getIdCompany()+ "', '" +c.getNameCompany()+ "', '" +c.getEmailCompany()+ "', '" +c.getPasswordCompany()+ "', '" +c.getNumberCompany()+ "', '" +c.getAddressCompany()+"')";
+      String requete="INSERT INTO `company` (`IdCompany`, `NameCompany`, `EmailCompany`, `PasswordCompany`, `NumberCompany`, `AddressCompany`, `IdAnnonce`) VALUES ('" +c.getIdCompany()+ "', '" +c.getNameCompany()+ "', '" +c.getEmailCompany()+ "', '" +c.getPasswordCompany()+ "', '" +c.getNumberCompany()+ "', '" +c.getAddressCompany()+"', '"+124+"')";
       ste.executeUpdate(requete);
       System.out.println("votre compte Compagnie est ajoutée");
      }
   
-     public void supprimerCompany (int IdCompany) throws SQLException{
-        String requete ="DELETE FROM company WHERE company.`IdCompany` = '" +IdCompany+ "' " ;
+     public void supprimerCompany (String NameCompany) throws SQLException{
+        String requete ="DELETE FROM company WHERE company.`NameCompany` = '" +NameCompany+ "' " ;
         ste.executeUpdate(requete);
         System.out.println("Votre Compangnie compte est supprimé");
         
@@ -71,11 +71,28 @@ public class ServiceCompany {
                     rst.getString("EmailCompany"),
                     rst.getString("PasswordCompany"),
                     rst.getInt("NumberCompany"),
-                    rst.getString("AddressCompany"));
+                    rst.getString("AddressCompany"),
+                    rst.getInt("IdAnnonce"));
            company.add(c);
         }
         return company;
     }
+   
+    public Company getCompanyByEmail(String EmailCompany) throws SQLException{
+         String req="SELECT * FROM company WHERE EmailCompany LIKE '"+EmailCompany+"' ";
+         Statement s = con.createStatement();
+         ResultSet rs = s.executeQuery(req);
+         Company a = new Company();
+         if(rs.next()){
+             a.setIdCompany(rs.getInt("IdCompany"));
+             a.setNameCompany(rs.getString("NameCompany"));
+             a.setEmailCompany(rs.getString("EmailCompany"));
+             a.setNumberCompany(rs.getInt("NumberCompany"));
+             a.setPasswordCompany(rs.getString("PasswordCompany"));
+      
+         }
+         return (a);
+     }
 }
      
 

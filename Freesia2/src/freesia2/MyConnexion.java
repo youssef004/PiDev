@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class MyConnexion {
 
-    static String url="jdbc:mysql://localhost:3306/freesia2";//fi blaset localhost najem nhot @ip win hatit ma base de donne 
+    static String url="jdbc:mysql://localhost:3306/pidev";//fi blaset localhost najem nhot @ip win hatit ma base de donne 
     static String login="root";
     static String pwd="";
     static Connection con;
@@ -39,11 +39,11 @@ public class MyConnexion {
         System.out.println(sqlDate);*/
             //ServiceChariot save = new ServiceChariot();
          
-             /* ServiceCompany save = new ServiceCompany();
+              /*ServiceCompany save = new ServiceCompany();
              Company pos= new Company(NULL,"raya","raya@esprit.com","lkdalzj",5,"10rue5saKD");
             save.ajouterCompany(pos);*/
             //Cart A= new Cart (NULL,4,331,21);
-            //save.ajouterCart(A);   
+           // save.ajouterCart(A);   
            //save.supprimerCart(111);
           //save.modifierAnnonce(112);
        //save.listerCart().forEach(e->System.out.println(e));

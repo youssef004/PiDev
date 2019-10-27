@@ -2,16 +2,23 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Compte_company_modifierController">
    <children>
-      <Label layoutX="104.0" layoutY="171.0" prefHeight="70.0" prefWidth="417.0" text="Votre Compte à été modifié avec succés" textFill="#a11818" textOverrun="WORD_ELLIPSIS">
+      <ImageView fitHeight="301.0" fitWidth="467.0" layoutX="68.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../View/shutterstock_74581096-480x0-c-default.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="92.0" layoutY="14.0" prefHeight="70.0" prefWidth="417.0" text="Votre Compte à été modifié avec succés" textFill="#a11818" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button layoutX="244.0" layoutY="289.0" mnemonicParsing="false" onAction="#retour_modif_company" prefHeight="25.0" prefWidth="113.0" text="Retour" />
+      <Button layoutX="365.0" layoutY="337.0" mnemonicParsing="false" onAction="#retour_modif_company" prefHeight="25.0" prefWidth="113.0" text="Retour" />
    </children>
 </AnchorPane>

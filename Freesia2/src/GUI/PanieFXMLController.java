@@ -12,7 +12,9 @@ import Service.ServicePlants;
 import freesia2.MyConnexion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import static java.sql.Types.NULL;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.AccessibleRole;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,6 +40,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -71,42 +75,42 @@ public class PanieFXMLController implements Initializable {
     private TableColumn<Plants, String> tf_Description;
     @FXML
     private TableColumn<Plants, Float> tf_price;
-    
+    private int Id = NULL;
     /**
      * Initializes the controller class.
      */
-    private ObservableList<Plants>data = FXCollections.observableArrayList();
-    List<Plants> st = new ArrayList<>();
+    private ObservableList<Cart>data = FXCollections.observableArrayList();
+    List<Cart> st = new ArrayList<>();
    
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        ServicePlants p = new ServicePlants();
-        
-        try{
-            
-            st=p.listerPlant();
-            
-            data.addAll(st);
-            tf_Idplant.setCellValueFactory(new PropertyValueFactory<>("IdPlant"));
-            tf_name.setCellValueFactory(new PropertyValueFactory<>("NamePlant"));
-            tfType.setCellValueFactory(new PropertyValueFactory<>("TypePlant"));
-            tf_quantity.setCellValueFactory(new PropertyValueFactory<>("QuantityPlant"));
-            tf_categorie.setCellValueFactory(new PropertyValueFactory<>("CategoryPlant"));
-            tf_Description.setCellValueFactory(new PropertyValueFactory<>("DescriptionPlant"));
-            tf_price.setCellValueFactory(new PropertyValueFactory<>("PricePlant"));
-            tftablePlants.setItems(data);
-             }catch(SQLException ex) {
-            Logger.getLogger(PanieFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        try {
-            p.findTotalPrix();
-        } catch (Exception ex) {
-            Logger.getLogger(PanieFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
+       tf_name.setCellFactory(TextFieldTableCell.forTableColumn());
+       initColumns();
+       loadData();
     }    
+    private void initColumns() {
+        //CId.setCellValueFactory(new PropertyValueFactory<>("IdAnnoce"));
+        tf_Idplant.setCellValueFactory(new PropertyValueFactory<>("IdPlant"));
+        tf_name.setCellValueFactory(new PropertyValueFactory<>("NamePlant"));
+        tfType.setCellValueFactory(new PropertyValueFactory<>("TypePlant"));
+        tf_quantity.setCellValueFactory(new PropertyValueFactory<>("QuantityPlant"));
+        tf_categorie.setCellValueFactory(new PropertyValueFactory<>("CategoryPlant"));
+        tf_price.setCellValueFactory(new PropertyValueFactory<>("PricePlant"));
+        tf_Description.setCellValueFactory(new PropertyValueFactory<>("DescriptionPlant"));
+    }
+    private void loadData() {
+        ObservableList<Plants> data = null;
+        try {
+            data = FXCollections.observableArrayList(new ServicePlants().listerPlant());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        tftablePlants.setItems(data);
+    }
 
   
     @FXML
@@ -121,68 +125,102 @@ public class PanieFXMLController implements Initializable {
     }
 
     @FXML
-    private void gotosupp(KeyEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Produit.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+    private void gotosupp(KeyEvent event) throws IOException, SQLException {
+     
+          ServicePlants sa = new ServicePlants();
+
+        Plants p = tftablePlants.getSelectionModel().getSelectedItem();
+        
+        int Id1 = p.getIdPlant();
+        this.Id=Id1;
+        System.out.println(Id1);
+        
+        
+   
     }
 
     @FXML
-    private void supp_pdt_cart(ActionEvent event) {
-      
-    /*Plants p = tftablePlants.getSelectionModel().getSelectedItem();
-    ServicePlants s = new ServicePlants();
-    int IdPlant = p.getIdPlant();
+    private void supp_pdt_cart(ActionEvent event) throws IOException, SQLException {
+    
+    
+        ServicePlants sa = new ServicePlants();
+
+        Plants p = tftablePlants.getSelectionModel().getSelectedItem();
+        
+       
         try {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Boîte de dialogue de confirmation");
             alert.setHeaderText(null);
-            alert.setContentText("Êtes-vous sûr de vouloir supprimer"+p.getNamePlant());
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer " + p.getNamePlant());
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                s.supprimerPlant(s.getId);
-                
+                 sa.suprrimerProduit(this.Id);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-          loadData();
-    }*/
+        loadData();
+   
     }
 
-    @FXML
-    private void ajouterCart(ActionEvent event) {
-    }
 
     @FXML
     private void gotoFacture(KeyEvent event) {
     } 
 
+  
+
     @FXML
-    private void TotalPrixP(ActionEvent event) {
+    private void TotalnbrArticle(MouseEvent event) throws SQLException {
+          
+         ServicePlants sa = new ServicePlants(); 
+        String totale=sa.AfficheTotalProduit();
+        tfnbreproduit.setText(totale);
+        System.out.println(totale);
+    }
+
+    @FXML
+    private void supp_pdt_cart1(MouseEvent event) throws SQLException {
+       
+        ServicePlants sa = new ServicePlants();
+        Plants p = tftablePlants.getSelectionModel().getSelectedItem();
+        int Id = p.getIdPlant();
+        System.out.println(Id);
+        sa.suprrimerProduit(Id);
+   
+    }
+
+    @FXML
+    private void supp_prod_chariot(KeyEvent event) {
         
     }
 
     @FXML
-    private void TotalnbrArticle(MouseEvent event) {
-        ServicePlants sp = new ServicePlants();
-       // sp.findTotalPrix
-      //  verif.setText("raya");
-       
+    private void gotoModif_chariot(KeyEvent event) {
     }
 
     @FXML
-    private void TotalPrixP(MouseEvent event) {
-      /*  ServiceAnnonce sa = new ServiceAnnonce() ;
-        Annonce p = liste.getSelectionModel().getSelectedItem();
-        int Id = p.getIdAnnoce();
-        p=sa.getAnnonceById(Id);
-        Ctitre11.setText(p.getTitreAnnoce());
-        Cdiscription11.setText(p.getDescriptionAnnonce());
-        CPicture11.setText(p.getPicture());
+    private void modifier_panier(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Produitmodif.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (event.getSource())).getScene().getWindow().hide();  
     }
-   */
-}}
+
+    @FXML
+    private void TotalPrix(MouseEvent event) throws SQLException {
+       
+      ServicePlants sa = new ServicePlants(); 
+      String prix=sa.TotalPrixProduit();
+      tftotalprix.setText(prix);
+      System.out.println(prix);
+   
+    }
+      
+        }
+
+   

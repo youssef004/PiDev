@@ -14,17 +14,15 @@ public class Cart {
     private int NumberProduit;
     private int TotalChariot;
     private float BonusChariot;
-    private int IdPlant;
 
     public Cart() {
     }
 
-    public Cart(int IdChariot, int NumberProduit, int TotalChariot, float BonusChariot, int IdPlant) {
+    public Cart(int IdChariot, int NumberProduit, int TotalChariot, float BonusChariot) {
         this.IdChariot = IdChariot;
         this.NumberProduit = NumberProduit;
         this.TotalChariot = TotalChariot;
         this.BonusChariot = BonusChariot;
-        this.IdPlant = IdPlant;
     }
 
     public int getIdChariot() {
@@ -59,18 +57,10 @@ public class Cart {
         this.BonusChariot = BonusChariot;
     }
 
-    public int getIdPlant() {
-        return IdPlant;
-    }
-
-    public void setIdPlant(int IdPlant) {
-        this.IdPlant = IdPlant;
-    }
-
     @Override
     public String toString() {
-        return "Cart{" + "IdChariot=" + IdChariot + ", NumberProduit=" + NumberProduit + ", TotalChariot=" + TotalChariot + ", BonusChariot=" + BonusChariot + ", IdPlant=" + IdPlant + '}';
+        return "Cart{" + "IdChariot=" + IdChariot + ", NumberProduit=" + NumberProduit + ", TotalChariot=" + TotalChariot + ", BonusChariot=" + BonusChariot + '}';
     }
-  
+   
 
 }

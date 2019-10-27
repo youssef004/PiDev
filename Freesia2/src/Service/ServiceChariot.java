@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import freesia2.MyConnexion;
 import static java.sql.JDBCType.NULL;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.management.Query;
 
 /**
@@ -28,62 +31,91 @@ public class ServiceChariot {
             System.out.println(ex);  
         }
     }
-     public void ajouterCart(Cart c) throws SQLException, SQLException, SQLException, SQLException {      
-      String requete="INSERT INTO `cart` (`IdChariot`, `NumberProduit`, `TotalChariot`, `BonusChariot`,'IdPlant') VALUES ('" +c.getIdChariot()+ "', '" +c.getNumberProduit()+ "', '" +c.getTotalChariot()+ "', '" +c.getBonusChariot()+ "',''" +c.getIdPlant()+ ");";
+     
+     
+     public void ajouterCart(Cart c) throws SQLException {   /*   
+      String requete="INSERT INTO `cart` (`IdPlant`, `NamePlant`, `TypePlant`, `QuantityPlant`,`CategoryPlant`,`PricePlant`,`DescriptionPlant`) VALUES ('" +c.getIdPlant()+ "', '" +c.getNamePlant()+ "', '" +c.getTypePlant()+ "', '" +c.getQuantityPlant()+ "','" +c.getCategoriePlant()+ "','" +c.getPricePlant()+"','" +c.getDescriptionPlant()+"')";
       ste.executeUpdate(requete);
-      System.out.println("produit ajouté");
+      System.out.println("produit ajouté dans le chariot");*/
      }
   
-     public void supprimerCart (int IdChariot) throws SQLException{
-        String requete ="DELETE FROM cart WHERE cart.`IdChariot` = '" +IdChariot+ "' " ;
+   /*  public void supprimerCart (int IdPlant) throws SQLException{
+        String requete ="DELETE FROM cart WHERE cart.`IdPlant` = '" +IdPlant+ "' " ;
         ste.executeUpdate(requete);
-        System.out.println("Produit supprimer");
+        System.out.println("Produit supprimer du chariot");
         
      }
-  
-    public void modifierCart (int IdChariot) throws SQLException{
+  */
+   /* public void modifierCart (int IdChariot) throws SQLException{
         String requete="UPDATE `cart` SET `NumberProduit` = '5', `BonusChariot` = '20' WHERE `cart`.`IdChariot` = '"+IdChariot+"'; ";
         ste.executeUpdate(requete);
            System.out.println("Pannié modifier");
-    }
+    }*/
   
+    
+    public void  modifierProduitCart(String NamePlant, int QuantityPlant) throws ParseException{
+     
+        try {
+            ServiceChariot sc = new ServiceChariot();
+            java.sql.Statement st=con.createStatement();
+            int nbre=st.executeUpdate("update cart set QuantityPlant='"+QuantityPlant+"' where NamePlant='"+NamePlant+"' ");
+            System.out.println("Quantite modifié !");
 
-    public List<Cart> listerCart() throws SQLException {
-        List <Cart> cart= new ArrayList<>();
-        String req="SELECT * FROM cart";
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceChariot.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void supprimerProduitCart(String NamePlant){
+        String requete ="DELETE FROM cart  WHERE cart.`NamePlant` = '"+NamePlant+"' ";
+        try{
+                Statement st = con.createStatement();
+                st.executeUpdate(requete);
+                System.out.println("Produit supprimé du chariot !");
+
+      }catch (SQLException ex) {
+            System.out.println("Erreur d'insertion !"+ex.getMessage());
+      }}
+    
+    /**
+     *
+     * @return
+     */
+    
+       
+       /* List <Cart> cart= new ArrayList<>();
+        String req="SELECT `IdPlant`, `NamePlant`, `TypePlant`, `QuantityPlant`, `CategoryPlant`, `DescriptionPlant` ,`PricePlant` FROM cart";
         Statement stm=con.createStatement();
         ResultSet rst=stm.executeQuery(req);
 
         while (rst.next()){
             Cart c = new Cart(
-                    rst.getInt("IdChariot"),
-                    rst.getInt("NumberProduit"),
-                    rst.getInt("TotalChariot"),
-                    rst.getFloat("BonusChariot"),
-                    rst.getInt("IdPlant"));
+                    rst.getInt("IdPlant"),
+                    rst.getString("NamePlant"),
+                    rst.getString("TypePlant"),
+                    rst.getInt("QuantityPlant"),
+                    rst.getString("CategoryPlant"),
+                    rst.getFloat("PricePlant"),
+                    rst.getString("DescriptionPlant"));
            cart.add(c);
         }
         return cart;
-    }
-   /* public Cart getPlantById(int Id) throws SQLException{
-      /*   String req="SELECT * FROM plants WHERE IdPlant LIKE '"+IdPlant+"' ";
-         Statement s = con.createStatement();
-         ResultSet rs = s.executeQuery(req);
-         Cart a = new Cart();
-         if(rs.next()){
-             a.setId(rs.getInt("CinAdmin"));
-             a.setFirstNameAdmin(rs.getString("FirstNameAdmin"));
-             a.setLasttNameAdmin(rs.getString("LastNameAdmin"));
-             a.setEmailAdmin(rs.getString("EmailAdmin"));
-             a.setPwdAdmin(rs.getString("PwdAdmin"));
-      
-         }
-         return (a);*/
-
-    
+    }*/
+   /* public boolean findTotalPrix(int price) throws Exception{
+        int i=0; 
+        try{ 
+            Sta
+        }
+       String requete = ("SELECT SUM(`PricePlant`) FROM `plants` WHERE 1");
+       //ste.executeUpdate(requete);
+         System.out.println(ste.executeUpdate(requete));
+       */
      
+       
 
-     
-    }
+
+
+
+}
+ 
     
 

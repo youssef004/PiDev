@@ -3,26 +3,40 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="tfCompte_company" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Company_addController">
    <children>
+      <ImageView fitHeight="422.0" fitWidth="654.0" layoutX="-9.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../View/cactus.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="tfnomcompany" layoutX="226.0" layoutY="115.0" />
       <TextField fx:id="tfemailcompany" layoutX="226.0" layoutY="162.0" />
       <TextField fx:id="tfpswcompany" layoutX="226.0" layoutY="207.0" />
       <TextField fx:id="tfnumerocompany" layoutX="226.0" layoutY="245.0" />
-      <TextField fx:id="tfadressecompany" layoutX="204.0" layoutY="282.0" prefHeight="25.0" prefWidth="235.0" />
-      <Label layoutX="18.0" layoutY="119.0" text="Nom de votre pepinière:" />
-      <Label layoutX="22.0" layoutY="166.0" text="Email de votre compte:" />
-      <Label layoutX="18.0" layoutY="211.0" prefHeight="17.0" prefWidth="166.0" text="Password pour votre compte:" />
-      <Label layoutX="18.0" layoutY="249.0" text="Numero de votre pepinière:" />
-      <Label layoutX="9.0" layoutY="286.0" prefHeight="17.0" prefWidth="166.0" text="Adresse de votre pepinière:" />
-      <Label layoutX="167.0" layoutY="-3.0" prefHeight="34.0" prefWidth="235.0" text="Creation d'un compte pour votre pipinière" />
-      <Button layoutX="70.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajoutcomptecompany" onKeyPressed="#gotoAjouter" prefHeight="25.0" prefWidth="157.0" text="Ajouter compte" />
-      <Text layoutX="18.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Pepinière:" wrappingWidth="105.525390625" />
+      <TextField fx:id="tfadressecompany" layoutX="247.0" layoutY="282.0" prefHeight="25.0" prefWidth="235.0" />
+      <Label layoutX="59.0" layoutY="120.0" text="Nom de votre pepinière:" textFill="WHITE" />
+      <Label layoutX="62.0" layoutY="166.0" text="Email de votre compte:" textFill="WHITE" />
+      <Label layoutX="55.0" layoutY="211.0" prefHeight="17.0" prefWidth="166.0" text="Password pour votre compte:" textFill="#ffdede" />
+      <Label layoutX="51.0" layoutY="249.0" prefHeight="14.0" prefWidth="149.0" text="Numero de votre pepinière:" textFill="#fffafa" />
+      <Label layoutX="55.0" layoutY="286.0" prefHeight="17.0" prefWidth="166.0" text="Adresse de votre pepinière:" textFill="#f8f3f3" />
+      <Label layoutX="143.0" layoutY="14.0" prefHeight="34.0" prefWidth="347.0" text="Creation d'un compte pour votre pèpinière">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Button layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajoutcomptecompany" onKeyPressed="#gotoAjouter" prefHeight="25.0" prefWidth="157.0" text="Ajouter compte" />
+      <Text fill="WHITE" layoutX="62.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Pepinière:" wrappingWidth="105.525390625">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Text>
       <TextField fx:id="tfidcompany" layoutX="226.0" layoutY="74.0" />
-      <Button layoutX="256.0" layoutY="336.0" mnemonicParsing="false" onAction="#suppcomptecompany" prefHeight="25.0" prefWidth="139.0" text="Supprimer" />
-      <Button layoutX="433.0" layoutY="336.0" mnemonicParsing="false" onAction="#modifcomptecompany" prefHeight="25.0" prefWidth="130.0" text="Modifier" />
+      <Button layoutX="221.0" layoutY="336.0" mnemonicParsing="false" onAction="#suppcomptecompany" prefHeight="25.0" prefWidth="139.0" text="Supprimer" />
+      <Button layoutX="383.0" layoutY="336.0" mnemonicParsing="false" onAction="#modifcomptecompany" prefHeight="25.0" prefWidth="149.0" text="Modifier" />
    </children>
 </AnchorPane>

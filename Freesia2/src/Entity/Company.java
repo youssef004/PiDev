@@ -18,17 +18,27 @@ public class Company {
     private String PasswordCompany;
     private int NumberCompany;
     private String AddressCompany;
+    private int IdAnnonce;
 
-    public Company(int IdCompany, String NameCompany, String EmailCompany, String PasswordCompany, int NumberCompany, String AddressCompany) {
+    public Company(int IdCompany, String NameCompany, String EmailCompany, String PasswordCompany, int NumberCompany, String AddressCompany, int IdAnnonce) {
         this.IdCompany = IdCompany;
         this.NameCompany = NameCompany;
         this.EmailCompany = EmailCompany;
         this.PasswordCompany = PasswordCompany;
         this.NumberCompany = NumberCompany;
         this.AddressCompany = AddressCompany;
+        this.IdAnnonce=IdAnnonce;
     } 
 
     public Company() {
+    }
+
+    public int getIdAnnonce() {
+        return IdAnnonce;
+    }
+
+    public void setIdAnnonce(int IdAnnonce) {
+        this.IdAnnonce = IdAnnonce;
     }
   
     public int getIdCompany() {
