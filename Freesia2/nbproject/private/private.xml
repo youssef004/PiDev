@@ -5,11 +5,8 @@
         <group>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/NewMain.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/PanieFXMLController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/ProduitController.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/ProduitmodifController.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/Company_addController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/Service/ServicePlants.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/Service/ServiceCommande.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/Freesia2/src/GUI/Produit.fxml</file>
         </group>
     </open-files>
 </project-private>

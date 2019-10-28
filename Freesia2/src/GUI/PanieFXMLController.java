@@ -18,8 +18,10 @@ import java.sql.Statement;
 import static java.sql.Types.NULL;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +46,22 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.management.Query;
+import java.util.Properties;
+import java.util.Random;
+import javax.mail.PasswordAuthentication;
+import javax.mail.MessagingException;
+import javax.mail.*;
+import javax.swing.JOptionPane;
+
+
+
 
 /**
  * FXML Controller class
@@ -61,8 +78,6 @@ public class PanieFXMLController implements Initializable {
     private Label verif;
     @FXML
     private TableView<Plants> tftablePlants;
-    @FXML
-    private TableColumn<Plants, Integer> tf_Idplant;
     @FXML
     private TableColumn<Plants, String> tf_name;
     @FXML
@@ -93,8 +108,8 @@ public class PanieFXMLController implements Initializable {
        loadData();
     }    
     private void initColumns() {
-        //CId.setCellValueFactory(new PropertyValueFactory<>("IdAnnoce"));
-        tf_Idplant.setCellValueFactory(new PropertyValueFactory<>("IdPlant"));
+        
+        //tf_Idplant.setCellValueFactory(new PropertyValueFactory<>("IdPlant"));
         tf_name.setCellValueFactory(new PropertyValueFactory<>("NamePlant"));
         tfType.setCellValueFactory(new PropertyValueFactory<>("TypePlant"));
         tf_quantity.setCellValueFactory(new PropertyValueFactory<>("QuantityPlant"));
@@ -114,39 +129,48 @@ public class PanieFXMLController implements Initializable {
 
   
     @FXML
-    private void commanderproduit(ActionEvent event) throws IOException  {
+    private void commanderproduit(ActionEvent event) throws IOException, MessagingException, SQLException  {
+            
+     final String fromEmail = "hadhriraya@gmail.com"; //requires valid gmail id
+		final String password = "123rayahadhri1995****"; // correct password for gmail id
+		final String toEmail = "raya.hadhri@esprit.tn"; // can be any email id 
+		
+		System.out.println("TLSEmail Start");
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtp.port", "587"); //TLS Port
+		props.put("mail.smtp.auth", "true"); //enable authentication
+		props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+		
+                //create Authenticator object to pass in Session.getInstance argument
+		Authenticator auth = new Authenticator() {
+			//override the getPasswordAuthentication method
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		};
+		Session session = Session.getInstance(props, auth);
+               ServicePlants sa = new ServicePlants(); 
+                String totale=sa.AfficheTotalProduit();
+                tfnbreproduit.setText(totale);
+                //System.out.println(totale);
+		
+	ServiceChariot.sendEmail(session, toEmail,"Votre commande est valider","Le nombre totale des produits commendés est ="+totale);
+	
         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Facture.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();}
       
-    }
 
     @FXML
     private void gotosupp(KeyEvent event) throws IOException, SQLException {
-     
-          ServicePlants sa = new ServicePlants();
+      ServicePlants sa = new ServicePlants();
 
-        Plants p = tftablePlants.getSelectionModel().getSelectedItem();
-        
-        int Id1 = p.getIdPlant();
-        this.Id=Id1;
-        System.out.println(Id1);
-        
-        
-   
-    }
-
-    @FXML
-    private void supp_pdt_cart(ActionEvent event) throws IOException, SQLException {
-    
-    
-        ServicePlants sa = new ServicePlants();
-
-        Plants p = tftablePlants.getSelectionModel().getSelectedItem();
-        
+        Plants p = tftablePlants.getSelectionModel().getSelectedItem();//recuperation des donnees de la base
+        int Id=this.Id;
        
         try {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -155,14 +179,14 @@ public class PanieFXMLController implements Initializable {
             alert.setContentText("Êtes-vous sûr de vouloir supprimer " + p.getNamePlant());
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                 sa.suprrimerProduit(this.Id);
+                 sa.suprrimerProduit(Id);
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         loadData();
-   
+  
     }
 
 
@@ -183,19 +207,28 @@ public class PanieFXMLController implements Initializable {
 
     @FXML
     private void supp_pdt_cart1(MouseEvent event) throws SQLException {
-       
-        ServicePlants sa = new ServicePlants();
+       ServicePlants sa = new ServicePlants();
+
         Plants p = tftablePlants.getSelectionModel().getSelectedItem();
-        int Id = p.getIdPlant();
-        System.out.println(Id);
-        sa.suprrimerProduit(Id);
-   
+        int Id=p.getIdPlant();
+       
+        try {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Boîte de dialogue de confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer " + p.getNamePlant());
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                 sa.suprrimerProduit(Id);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        loadData(); 
+     
     }
 
-    @FXML
-    private void supp_prod_chariot(KeyEvent event) {
-        
-    }
 
     @FXML
     private void gotoModif_chariot(KeyEvent event) {

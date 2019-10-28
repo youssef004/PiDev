@@ -6,7 +6,9 @@
 package GUI;
 
 import Entity.Cart;
+import Entity.Plants;
 import Service.ServiceChariot;
+import Service.ServicePlants;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -46,19 +48,20 @@ public class ProduitmodifController implements Initializable {
     @FXML
     private void modif(ActionEvent event) throws IOException, ParseException {
        
-       /*  Cart c = new Cart();
-         c.setNamePlant(tfnompdtmodif.getText());
-         c.setQuantityPlant(Integer.valueOf(tfQuantityPdt.getText()));
-         ServiceChariot sc;
+        /* ServiceChariot sc = new ServiceChariot();  
+        Cart c = tfnompdtmodif.getSelectionModel().getSelectedItem();
+         //sc.setNamePlant(tfnompdtmodif.getText());
+         //sc.setQuantityPlant(Integer.valueOf(tfQuantityPdt.getText()));
+         //ServiceChariot sc;
          sc = new ServiceChariot();
-         sc.modifierProduitCart(c.getNamePlant(),c.getQuantityPlant());
+         sc.modifierProduitCart(sc.getNamePlant(),sc.getQuantityPlant());*/
         
         Parent root = FXMLLoader.load(getClass().getResource("../GUI/panieFXML.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();*/
+        ((Node) (event.getSource())).getScene().getWindow().hide();
          
         
     }

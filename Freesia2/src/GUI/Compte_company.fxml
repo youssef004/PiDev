@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <TextField fx:id="tfnomcompany" layoutX="226.0" layoutY="115.0" />
-      <TextField fx:id="tfemailcompany" layoutX="226.0" layoutY="162.0" />
+      <TextField fx:id="tfemailcompany" layoutX="226.0" layoutY="162.0" promptText="prenom@example.com" />
       <TextField fx:id="tfpswcompany" layoutX="226.0" layoutY="207.0" />
       <TextField fx:id="tfnumerocompany" layoutX="226.0" layoutY="245.0" />
       <TextField fx:id="tfadressecompany" layoutX="247.0" layoutY="282.0" prefHeight="25.0" prefWidth="235.0" />

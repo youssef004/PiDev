@@ -37,7 +37,7 @@ public class ServicePlants {
  
     public List<Plants> listerPlant() throws SQLException {
         List <Plants> Plantss= new ArrayList<>();
-        String req="SELECT * FROM `plants` WHERE `IdChariot` = 2";
+        String req="SELECT * FROM `plants` WHERE `IdChariot` = 5";
         Statement stm=con.createStatement();
         ResultSet rst=stm.executeQuery(req);
      
@@ -57,14 +57,14 @@ public class ServicePlants {
         return Plantss;
     }
     public void suprrimerProduit(int Id) throws SQLException {
-       String req="UPDATE `plants` SET `IdChariot` = '5' WHERE `plants`.`IdPlant` = "+Id+" ";
+       String req="UPDATE `plants` SET `IdChariot` = '2' WHERE `plants`.`IdPlant` = "+Id+" ";
        Statement stm=con.createStatement();
         ste.executeUpdate(req);
        System.out.println("element supprimé");
        
     }
      public String AfficheTotalProduit() throws SQLException  {
-       String req="SELECT COUNT(*) FROM `plants` WHERE IdChariot=2";
+       String req="SELECT COUNT(*) FROM `plants` WHERE IdChariot=5";
        Statement stm=con.createStatement();
         ResultSet rst=stm.executeQuery(req);
         rst.next();
@@ -74,7 +74,7 @@ public class ServicePlants {
     }
      
        public String TotalPrixProduit() throws SQLException {
-       String req="SELECT SUM(PricePlant) FROM plants WHERE IdChariot=2 ";
+       String req="SELECT SUM(PricePlant) FROM plants WHERE IdChariot=5";
         Statement stm=con.createStatement();
          ResultSet rst=stm.executeQuery(req);
         rst.next();
@@ -82,23 +82,10 @@ public class ServicePlants {
         System.out.println(prix);
         return(prix);
    
-       }      } 
+       }    
+} 
        
        
-       
-       /* try{
-         PreparedStatement preparedStmt = con.prepareStatement(req);
-        
-      // ResultSet resultset=con.getInt(req);
-       //int res = req.getPricePlant();
-        preparedStmt.execute();
-        } catch (Exception e)
-        {
-          System.err.println("Got an exception! ");
-          System.err.println(e);
-        }  System.out.println(req);
-     }
-      */
 
      
 

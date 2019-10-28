@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -25,6 +27,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
+import javax.mail.*;
+import java.util.Properties;
 
 /**
  * FXML Controller class
@@ -49,7 +61,7 @@ public class AuthentificationController implements Initializable {
     }    
 
     @FXML
-    private void connexion(ActionEvent event) throws IOException, SQLException {
+    private void connexion(ActionEvent event) throws IOException, SQLException, MessagingException {
         ServiceCompany gs = new ServiceCompany() ;
         Pattern p = Pattern.compile(
                 "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -78,7 +90,7 @@ public class AuthentificationController implements Initializable {
             Company a=new Company();
             a=(gs.getCompanyByEmail(tfLogin.getText()));
             if(a.getPasswordCompany().equals( tfpassword.getText()))
-            {
+            {    
                 Parent root = FXMLLoader.load(getClass().getResource("panieFXML.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
@@ -90,8 +102,8 @@ public class AuthentificationController implements Initializable {
                 tf_mdp_incorrect.setStyle("-fx-text-fill: #ff1744");
             }
 
-        }
- 
-     }
+}}
+     
     }
+    
     
