@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FactureController">
+   <children>
+      <Label layoutX="243.0" layoutY="33.0" prefHeight="43.0" prefWidth="115.0" text="Facture" textFill="#e83939">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Button layoutX="377.0" layoutY="345.0" mnemonicParsing="false" onAction="#Retour_facture" text="Retour" />
+   </children>
+</AnchorPane>
