@@ -39,6 +39,9 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import service.ServicePlant;
+import facebook4j.*;
+import facebook4j.auth.AccessToken;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -74,6 +77,7 @@ public class AfficherPlantRechercherController implements Initializable {
     private Text tf_Picture;
     @FXML
     private ImageView tf_image_view;
+      private Facebook facebook;
 
     /**
      * Initializes the controller class.
@@ -85,7 +89,7 @@ public class AfficherPlantRechercherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> {
-             initSpinner();
+            initSpinner();
             System.out.println(p);
             tf_name.setText(p.getNamePlant());
             tf_category.setText(p.getCategoryPlant());
@@ -96,13 +100,11 @@ public class AfficherPlantRechercherController implements Initializable {
             FileInputStream input;
             try {
                 input = new FileInputStream("C:\\wamp64\\www\\" + p.getPicturePlant() + "");
-                  Image image = new Image(input);
-            tf_image_view.setImage(image);
+                Image image = new Image(input);
+                tf_image_view.setImage(image);
             } catch (FileNotFoundException ex) {
-                   System.out.println("error");
+                System.out.println("error");
             }
-        
-      
 
         });
 
@@ -177,7 +179,38 @@ public class AfficherPlantRechercherController implements Initializable {
     }
 
     @FXML
-    private void PartagerPlant(ActionEvent event) {
+    private void PartagerPlant(ActionEvent event) throws FacebookException, IOException {
+
+        Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert1.setTitle("voulez vous partager");
+        
+                    facebook = new FacebookFactory().getInstance();
+        
+        facebook.setOAuthAppId("", "");//ysta3mlouh fazat connexion fb 
+        String accessTokenString = "EAAIAKZCwslSIBAMARIMX3wMdNZCZB8pORcydz5GZAJbmgCGrMtWSJVZAmPfdt5ZASZAZCRJzkYElaaoCP37ggcXoKlQGedZC2W348H050IZCJMeCI6oIyIJUpKwyivytsE99CCPWQbTHJhGa6JFo3tYdZCOgd89Vn19kgtGfrvJ5DpbDAZDZD";
+        AccessToken accessToken = new AccessToken(accessTokenString);
+        //set access token
+        facebook.setOAuthAccessToken(accessToken);
+        //ResponseList<Account> accounts = facebook.getAccounts();
+       // Account pageAccount = accounts.get(0);
+        try{
+       facebook.postStatusMessage("La plante " + p.getNamePlant() + " est avec quantite "+ p.getQuantityPlant() 
+       + " et de categorie " + p.getCategoryPlant() + " est disponible"); 
+        }catch(FacebookException fe){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Deja partager.");
+        alert.setHeaderText(null);
+        alert.setContentText("La plant  "+p.getNamePlant()+ " a été deja partager.");
+        alert.showAndWait();
+        }
+       
+       
+        Parent root = FXMLLoader.load(getClass().getResource("ConfirmerPartage.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+       // ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
@@ -198,12 +231,12 @@ public class AfficherPlantRechercherController implements Initializable {
     public void setPlant(Plant pl) {
         this.p = pl;
     }
+
     private void initSpinner() {
- tf_quantity.setValueFactory(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
+        tf_quantity.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
     }
-    public void gererStock(){
-        
-        
-    }
+
+   
+
 }

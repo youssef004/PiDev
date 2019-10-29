@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.sql.Connection;
 import static java.sql.Types.NULL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.activation.DataSource;
 import service.ServicePlant;
 
 /**
@@ -62,6 +64,20 @@ public class AjouterController implements Initializable {
     private Text tf_Picture;
     @FXML
     private Button RetourGestionPlant;
+    public Plant p;
+    public Connection c;
+    @FXML
+    private Text verif_price;
+    @FXML
+    private Text verif_name1;
+    @FXML
+    private Text verif_type;
+    @FXML
+    private Text verif_category;
+    @FXML
+    private Text verif_quantity;
+    @FXML
+    private Text verif_picture;
 
     /**
      * Initializes the controller class.
@@ -69,59 +85,87 @@ public class AjouterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initSpinner();
-    }    
+    }
 
     @FXML
     private void ConfirmerAjouterPlant(ActionEvent event) {
-          System.out.println("user");
+
+        System.out.println("user");
+        /*if (tf_name.getText().length() == 0 || tf_type.getText().length() == 0 || tf_description.getText().length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("veuillez remplir!!");
+            alert.setHeaderText("WARNING !");
+            alert.setContentText("some field are empty !!");
+            alert.showAndWait(); 
+            
+            else if (true) {
+
+}
+             (tf_name.getText().isEmpty()){
+            verif_name.setText("veuillez saisir le nom");
+        }
+        else if (tf_type.getText().isEmpty()) {
+            verif_type.setText("veuillez saisir le type");
+        }
+        else if (tf_quantity.getValue()==NULL) {
+            
+             verif_quantity.setText("veuillez saisir la quantité");
+        }
+        else if (tf_Picture.getText().isEmpty()) {
+            verif_picture.setText("veuillez rejoindre une photo");
+            
+        } 
         
-       Plant p = new Plant();
-       p.setNamePlant(tf_name.getText());
-       p.setTypePlant(tf_type.getText());
-     
-       tf_quantity.setEditable(true);
-      p.setQuantityPlant(tf_quantity.getValue());
-      
-       p.setCategoryPlant(tf_category.getText());
-     p.setPricePlant(Integer.valueOf(tf_price.getText()));
-       p.setPicturePlant(tf_Picture.getText());
-       p.setDescriptionPlant(tf_description.getText());
-       p.setIdPlant(NULL);
- 
-       ServicePlant PS=null;
-       PS = new ServicePlant();
-       PS.ajouterPlant(p);
-                 
+            
+        }*/
+             Plant p = new Plant();
+
+        p.setNamePlant(tf_name.getText());
+        p.setTypePlant(tf_type.getText());
+
+        tf_quantity.setEditable(true);
+        p.setQuantityPlant(tf_quantity.getValue());
+
+        p.setCategoryPlant(tf_category.getText());
+        p.setPricePlant(Integer.valueOf(tf_price.getText()));
+        p.setPicturePlant(tf_Picture.getText());
+        p.setDescriptionPlant(tf_description.getText());
+        p.setIdPlant(NULL);
+
+        ServicePlant PS = null;
+        PS = new ServicePlant();
+        PS.ajouterPlant(p);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Produit enregistré avec succès.");
         alert.setHeaderText(null);
-        alert.setContentText("Le produit "+p.getNamePlant()+ " a été créé.");
+        alert.setContentText("Le produit " + p.getNamePlant() + " a été créé.");
         alert.showAndWait();
-         if (tf_name.getText().length()==0 || tf_type.getText().length()==0 || tf_description.getText().length()==0){
-         
-           alert.setTitle("veuillez remplir!!");
-           alert.setHeaderText("WARNING !");
-           alert.setContentText("some field are empty !!");
-           alert.showAndWait();
-       } else {
-             
-           alert.setTitle("veuillez remplir!!");
-           alert.setHeaderText("Alert !");
-           alert.setContentText("Plant has been added!");
-           alert.showAndWait();
-       }
-         
+       if (tf_name.getText().length() == 0 || tf_type.getText().length() == 0 || tf_description.getText().length() == 0) {
+
+            alert.setTitle("veuillez remplir!!");
+            alert.setHeaderText("WARNING !");
+            alert.setContentText("some field are empty !!");
+            alert.showAndWait();
+        } else {
+
+            alert.setTitle("veuillez remplir!!");
+            alert.setHeaderText("Alert !");
+            alert.setContentText("Plant has been added!");
+            alert.showAndWait();
+        }
+
+      
        
     }
 
     @FXML
     private void clear_ajouter_plant(ActionEvent event) {
-           tf_name.clear();
+        tf_name.clear();
         tf_type.clear();
         tf_category.clear();
         tf_price.clear();
-      //  tf_quantity.clear;
+        //  tf_quantity.clear;
         tf_description.clear();
         System.out.println("tests");
     }
@@ -132,21 +176,21 @@ public class AjouterController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selectionner une image");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-        File file = fileChooser.showOpenDialog(primary);   
-        String path="C:\\wamp64\\www";
+        File file = fileChooser.showOpenDialog(primary);
+        String path = "C:\\wamp64\\www";
         tf_Picture.setText(file.getName());
-        if (file!= null){
+        if (file != null) {
             try {
-               Files.copy(file.toPath(),new File(path+"\\"+file.getName()).toPath());
+                Files.copy(file.toPath(), new File(path + "\\" + file.getName()).toPath());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-    }
+        }
     }
 
     @FXML
     private void RetourGestionPlant(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("GestionPlant.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GestionPlant.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -155,8 +199,8 @@ public class AjouterController implements Initializable {
     }
 
     private void initSpinner() {
- tf_quantity.setValueFactory(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
+        tf_quantity.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
     }
-    
+
 }

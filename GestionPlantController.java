@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -31,6 +32,10 @@ public class GestionPlantController implements Initializable {
     private Button RechercherPlant;
     @FXML
     private Button RetourGestionProduit;
+    @FXML
+    private ImageView background_gestion_plant;
+    @FXML
+    private Button AfficherStockPlant;
 
     /**
      * Initializes the controller class.
@@ -38,11 +43,11 @@ public class GestionPlantController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void AjouterPlant(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjouterPlant.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AjouterPlant.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -52,7 +57,7 @@ public class GestionPlantController implements Initializable {
 
     @FXML
     private void RechercherPlant(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("../GUI/RechercherPlant.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/RechercherPlant.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -62,12 +67,22 @@ public class GestionPlantController implements Initializable {
 
     @FXML
     private void RetourGestionProduit(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("GestionProduit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GestionProduit.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-    
+
+    @FXML
+    private void AfficherStockPlant(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("EtatStock.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
 }

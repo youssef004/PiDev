@@ -6,16 +6,22 @@
 package GUI;
 
 import entities.Plant;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import static java.sql.Types.NULL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +33,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.SpinnerValueFactory;
@@ -43,7 +50,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import service.ServicePlant;
+import utils.ConnexionBD;
 
 /**
  * FXML Controller class
@@ -54,6 +63,7 @@ public class RechercherPlantController implements Initializable {
 
     @FXML
     private TableView<Plant> tf_tree_table;
+
     @FXML
     private TableColumn<Plant, Integer> tf_id;
     @FXML
@@ -73,30 +83,47 @@ public class RechercherPlantController implements Initializable {
     @FXML
     private TextField tf_name_recherche;
     @FXML
-    private TextField tf_category_recherche;
-    @FXML
     private Button AfficherPlant;
     @FXML
     private Button RetourGestionPlant;
     @FXML
     private Button SupprimerPlant;
-
+    Connection c;
     /**
      * Initializes the controller class.
      */
-    private int x1 = NULL;
+    public Plant p;
+    int x1 = NULL;
     @FXML
     private Button AfficherStock;
-
+    @FXML
+    private ImageView image_recherche_plant;
+    @FXML
+    private ImageView background_rechercher_imageview;
+    @FXML
+    private ImageView icon_affiche_recherche_plant;
+    @FXML
+    private ImageView icon_retour_recherche_plant;
+    @FXML
+    private ImageView icon_affiche_recherche_plant1;
+    @FXML
+    private ImageView icon_affiche_recherche_plant11;
+     static String nom;
+     static int qt;
+    public RechercherPlantController(){
+    
+        c=(Connection) ConnexionBD.getInstanceConnexionBD().getConnection();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //tf_tree_table.setEditable(true);
+        
         ServicePlant svp = new ServicePlant();
         ArrayList<Plant> pl = null;
         try {
             pl = (ArrayList<Plant>) svp.listerPlant();
         } catch (SQLException ex) {
-            Logger.getLogger(AfficherPlantsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error ");
         }
         ObservableList<Plant> data = FXCollections.observableArrayList(pl);
         tf_id.setCellValueFactory(new PropertyValueFactory<>("IdPlant"));
@@ -116,20 +143,22 @@ public class RechercherPlantController implements Initializable {
         Plant p = tf_tree_table.getSelectionModel().getSelectedItem();
         if (p == null) {
             System.out.println("choisir plant");
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("choisir plant");
+
+            alert.showAndWait();
         } else {
-      
+
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "../GUI/AfficherPlantRechercher.fxml"
-                    ));
+                    getClass().getResource( "../GUI/AfficherPlantRechercher.fxml"));
             Scene scene = new Scene(loader.load());
             AfficherPlantRechercherController ct = loader.getController();
             ct.setPlant(p);
-            
+
             Stage stageAff = new Stage();
-            stageAff.setScene(
-                    scene
-            );
+            stageAff.setScene(scene);
 
             stageAff.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -168,9 +197,38 @@ public class RechercherPlantController implements Initializable {
     }
 
     @FXML
-    private void SupprimerPlant(ActionEvent event) throws SQLException {
+    private void SupprimerPlant(ActionEvent event) throws SQLException, IOException {
 
         Plant p = tf_tree_table.getSelectionModel().getSelectedItem();
+        //////
+        
+       /* 
+         if (p == null) {
+             
+            System.out.println("choisir plant");
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("choisir plant");
+
+            alert.showAndWait();
+        } else {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource( "../GUI/Quantity.fxml"));
+            Scene scene = new Scene(loader.load());
+            QuantityController ct = loader.getController();
+            ct.setPlant(p);
+
+            Stage stageAff = new Stage();
+            stageAff.setScene(scene);
+
+            stageAff.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
+        }
+*/
+        //////
         ServicePlant s = new ServicePlant();
         int IdPlant = p.getIdPlant();
         try {
@@ -188,6 +246,7 @@ public class RechercherPlantController implements Initializable {
         }
         loadData();
         refresh_plant();
+      
     }
 
     private void loadData() {
@@ -218,13 +277,65 @@ public class RechercherPlantController implements Initializable {
 
     @FXML
     private void AfficherStock(ActionEvent event) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("EtatStock.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("EtatStock.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
         ((Node) (event.getSource())).getScene().getWindow().hide();
-        
+
+    }
+
+    /*
+    @FXML
+    private void affiche_image_plant(MouseEvent event) throws FileNotFoundException {
+       Plant p = new Plant();
+                    FileInputStream input;
+                    input = new FileInputStream("C:\\wamp64\\www\\" + p.getPicturePlant() + "");
+                    Image image = new Image(input);
+                    image_recherche_plant.setImage(image);
+}*/
+    @FXML
+    private void affiche_image_plant(MouseEvent event) throws SQLException {
+        //ServicePlant sp =new ServicePlant();
+        Plant p=tf_tree_table.getSelectionModel().getSelectedItem();
+        int id=p.getIdPlant();
+        //p=sp.getPlantById(id);
+        this.x1=id;
+        String req = "select PicturePlant from plants where IdPlant=" + id;
+           Statement st = c.createStatement();
+                ResultSet rs = st.executeQuery(req);
+                if (rs.next()) {
+                    String title = rs.getString("PicturePlant");
+                    System.out.println(title);
+                    
+                    Image image=new Image("file:C:/wamp64/www/" + title);
+                    image_recherche_plant.setImage(image);
+            //FileInputStream input;
+//            try {
+//            
+//          
+//                input = new FileInputStream("C:\\wamp64\\www\\" + p.getPicturePlant() + "");
+//                   Image image = new Image(input);
+//            image_recherche_plant.setImage(image);
+//            } catch (FileNotFoundException ex) {
+//                System.out.println("error");
+//            }
+
     }
 
 }
+} 
+
+  
+         
+//String req = "select image from ad where ad_id=" + id;
+//            try {
+//                Statement st = con.createStatement();
+//                ResultSet rs = st.executeQuery(req);
+//                if (rs.next()) {
+//                    String title = rs.getString("image");
+//                    System.out.println(title);
+//
+//                    Image image = new Image("file:C:/wamp64/www/imageAd/" + title);
+//                     image_ad.setImage(image);
