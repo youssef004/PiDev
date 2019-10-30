@@ -11,7 +11,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" onDragDetected="#showAnnonce" prefHeight="724.0" prefWidth="1017.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeAnnonceController">
@@ -57,7 +56,7 @@
       <Button focusTraversable="false" layoutX="912.0" layoutY="519.0" mnemonicParsing="false" onAction="#browseP" prefHeight="25.0" prefWidth="16.0" text="..." />
       <TextField fx:id="rechercherfiled" layoutX="145.0" layoutY="162.0" onKeyReleased="#rechercherAnnonce" prefHeight="26.0" prefWidth="354.0" promptText="--   search" />
       <Button layoutX="471.0" layoutY="634.0" mnemonicParsing="false" onAction="#exporttoexcell" prefHeight="26.0" prefWidth="75.0" text="Export" />
-      <ImageView fx:id="imageview" fitHeight="289.0" fitWidth="261.0" layoutX="664.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageview" fitHeight="289.0" fitWidth="261.0" layoutX="675.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="60.0" layoutX="43.0" layoutY="626.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icon_back.png" />
@@ -83,12 +82,11 @@
             <Image url="@../img/icon_delete.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="49.0" fitWidth="48.0" layoutX="459.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icon_search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ad979303" height="289.0" layoutX="669.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="254.0" />
       <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="445.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icon_excel.png" />

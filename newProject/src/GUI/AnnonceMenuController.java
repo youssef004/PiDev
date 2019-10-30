@@ -46,7 +46,7 @@ public class AnnonceMenuController implements Initializable {
     private TextField titreAnnonce;
     @FXML
     private TextArea Description;
-    
+
     @FXML
     private DatePicker tfDate;
     @FXML
@@ -58,33 +58,39 @@ public class AnnonceMenuController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {    
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void add_annonce(ActionEvent event) throws SQLException, IOException {
-       
-        if(titreAnnonce.getText().equals("")){
-           verif.setText("right a Titre");
+
+        if (titreAnnonce.getText().equals("")) {
+            verif.setText("right a Titre");
             verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(Description.getText().equals("")){
+        } else if (Description.getText().equals("")) {
             verif.setText("right a Description");
             verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(ifPicture.getText().equals("")){
-           verif.setText("Brows a picture");
+        } else if (ifPicture.getText().equals("")) {
+            verif.setText("Brows a picture");
             verif.setStyle("-fx-text-fill: #ff1744");
-       }else{
-            Annonce A =new Annonce();
+        } else {
+            Annonce A = new Annonce();
             A.setDateAnnonce(Date.valueOf(tfDate.getValue()));
             A.setDescriptionAnnonce(Description.getText());
             A.setTitreAnnoce(titreAnnonce.getText());
             A.setPicture(ifPicture.getText());
             A.setIdAnnoce(NULL);
-            ServiceAnnonce AN=new ServiceAnnonce();
-            AN.ajouterAnnonce(A); 
-       }
-       
+            ServiceAnnonce AN = new ServiceAnnonce();
+            AN.ajouterAnnonce(A);
+            Parent root = FXMLLoader.load(getClass().getResource("../GUI/ListeAnnonce.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        }
+
         /*Parent root = FXMLLoader.load(getClass().getResource("../GUI/ListeAnnonce.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -101,7 +107,7 @@ public class AnnonceMenuController implements Initializable {
         stage.setScene(scene);
         stage.show();
         ((Node) (event.getSource())).getScene().getWindow().hide();
-        
+
     }
 
     @FXML
@@ -112,16 +118,23 @@ public class AnnonceMenuController implements Initializable {
         filechooser.setTitle("Selectionner Une Image");
         filechooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         File file = filechooser.showOpenDialog(primary);
-        String path ="C:\\wamp64\\www";
+        String path = "C:\\wamp64\\www";
         ifPicture.setText(file.getName());
-        if(file!=null)
-        {           
+        if (file != null) {
             try {
-                Files.copy(file.toPath(),new File(path+"\\"+file.getName()).toPath());
+                Files.copy(file.toPath(), new File(path + "\\" + file.getName()).toPath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    
+
+    private void refrechListe(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/AnnonceMenu.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
 }

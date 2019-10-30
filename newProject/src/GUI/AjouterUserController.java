@@ -5,11 +5,13 @@
  */
 package GUI;
 
+import Entity.Menbrecurrent;
 import Entity.membre;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import Service.ServiceUser;
 import static Service.ServiceUser.isInteger;
+import Service.servicecurrent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -75,9 +77,16 @@ public class AjouterUserController implements Initializable {
         // TODO
 
     }
+    /* else if (!mdp1.equals(mdp2)) {
+            verif.setText("verify you password");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } */
 
     @FXML
     private void AjouterUser(ActionEvent event) throws SQLException, IOException {
+         Service.servicecurrent s = new servicecurrent();
+          ServiceUser us = new ServiceUser();
+      
         Pattern p = Pattern.compile(
                 "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"
                 + "\\@"
@@ -90,7 +99,7 @@ public class AjouterUserController implements Initializable {
         Pattern p1 = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(tfEmail.getText());
         Matcher m1 = p1.matcher(tfNumber.getText());
-        Pattern Pnumberpass = Pattern.compile("[A-Z].*[0-9]");
+        Pattern Pnumberpass = Pattern.compile("[a-z].*[0-9]");
         Matcher mnumberpass = Pnumberpass.matcher(tfPassword.getText());
         String mdp1 = tfPassword.getText();
         int lenghtmdp = mdp1.length();
@@ -130,17 +139,15 @@ public class AjouterUserController implements Initializable {
             verif.setText("you need number to get Password");
             verif.setStyle("-fx-text-fill: #ff1744");
         }
-       else if (!tfPassword.getText().equals(verifPass.getText())) {
+       else if (!tfPassword.getText().equals(tfConfirm.getText())) {
             verif.setText("the password not equals");
-            verif.setStyle("-fx-text-fill: #ff1744");
-        }else if (!mdp1.equals(mdp2)) {
-            verif.setText("verify you password");
             verif.setStyle("-fx-text-fill: #ff1744");
         } else if (!m2.find()) {
             verif.setText("verify you Code postal");
             verif.setStyle("-fx-text-fill: #ff1744");
         } else {
             membre u = new membre();
+           // Menbrecurrent d = new Menbrecurrent(s.getUserByEmail(tfEmail.getText()));
             u.setLasteName(tfLastName.getText());
             u.setFirstName(tfFirstName.getText());
             u.setAddress(tfAdresse.getText());
@@ -161,6 +168,7 @@ public class AjouterUserController implements Initializable {
             stage.setScene(scene);
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
+            Menbrecurrent d = new Menbrecurrent(s.getUserByEmail(tfEmail.getText()));
         }
     }
 

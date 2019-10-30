@@ -425,7 +425,7 @@ private Statement ste;
        }else{
            last.setText("there is "+diffDays + " days, "+diffHours + " hours, "+diffMinutes + " minutes, "+diffSeconds + " s. " );
        }
-       last.setStyle("-fx-text-fill: #ff1744");
+       last.setStyle("-fx-text-fill: #17b8ff");
         
         
         
