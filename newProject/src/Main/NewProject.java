@@ -6,7 +6,7 @@
 package Main;
 
 import Entity.Annonce;
-import Entity.User;
+import Entity.membre;
 import Service.ServiceAnnonce;
 import Service.ServiceUser;
 import java.sql.Connection;
@@ -51,7 +51,7 @@ public class NewProject {
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
             //Annonce post = new Annonce(NULL,"New","new",sqlDate,"hjhjjhjj");
            // Annonce post1 = new Annonce(NULL,"OKkkkkkk",sqlDate,"sqlDate","hjhjjhjj");
-            User User1 =new User(NULL, "oumayma", "oumayma", "oumayma", "oumayma", 22222, "oumayma", "oumayma","country","Code",50);
+            membre User1 =new membre(NULL, "oumayma", "oumayma", "oumayma", "oumayma", 22222, "oumayma", "oumayma","country","Code",50);
             //save.ajouterAnnonce(post);
 //            save.modifierAnnonce(post1 ,129);
             //save.supprimerAnnonce(125);

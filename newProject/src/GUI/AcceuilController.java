@@ -59,5 +59,20 @@ public class AcceuilController implements Initializable {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         
     }
+
+    @FXML
+    private void menutoProfil(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/ProfileUpdate.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void PlantUser(ActionEvent event) { 
+        
+    }
     
 }

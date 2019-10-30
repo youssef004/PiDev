@@ -6,21 +6,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="DateAnnonce" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AnnonceMenuController">
+<AnchorPane id="AnchorPane" fx:id="DateAnnonce" prefHeight="486.0" prefWidth="636.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AnnonceMenuController">
     <stylesheets>
         <URL value="@annoncemenu.css" />
     </stylesheets>
    <children>
-      <Button layoutX="77.0" layoutY="326.0" mnemonicParsing="false" onAction="#add_annonce" prefHeight="26.0" prefWidth="183.0" text="ajouter annonce" />
-      <TextField fx:id="titreAnnonce" layoutX="104.0" layoutY="89.0" prefHeight="18.0" prefWidth="167.0" />
-      <Label layoutX="15.0" layoutY="93.0" prefHeight="18.0" prefWidth="62.0" text=" Titre :" />
-      <Label layoutX="314.0" layoutY="94.0" text="Date :" />
-      <TextArea fx:id="Description" layoutX="104.0" layoutY="139.0" prefHeight="168.0" prefWidth="242.0" />
-      <Label layoutX="15.0" layoutY="139.0" prefHeight="18.0" prefWidth="83.0" text="Description :" />
-      <Label layoutX="377.0" layoutY="139.0" text="Picture" />
-      <DatePicker fx:id="tfDate" layoutX="370.0" layoutY="90.0" />
-      <Button layoutX="396.0" layoutY="327.0" mnemonicParsing="false" onAction="#gotoaffiche" prefHeight="26.0" prefWidth="130.0" text="afficher annonce" />
+      <ImageView fitHeight="485.0" fitWidth="646.0" layoutX="-8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="77.0" layoutY="396.0" mnemonicParsing="false" onAction="#add_annonce" prefHeight="34.0" prefWidth="183.0" text="ajouter annonce" />
+      <TextField fx:id="titreAnnonce" layoutX="98.0" layoutY="147.0" prefHeight="26.0" prefWidth="242.0" />
+      <Label layoutX="14.0" layoutY="151.0" prefHeight="18.0" prefWidth="62.0" text=" Titre :" />
+      <Label layoutX="373.0" layoutY="151.0" text="Date :" />
+      <TextArea fx:id="Description" layoutX="98.0" layoutY="205.0" prefHeight="168.0" prefWidth="242.0" />
+      <Label layoutX="14.0" layoutY="214.0" prefHeight="18.0" prefWidth="83.0" text="Description :" />
+      <Label layoutX="370.0" layoutY="223.0" text="Picture" />
+      <DatePicker fx:id="tfDate" layoutX="425.0" layoutY="147.0" />
+      <Button layoutX="365.0" layoutY="396.0" mnemonicParsing="false" onAction="#gotoaffiche" prefHeight="34.0" prefWidth="183.0" text="afficher annonce" />
+      <Button layoutX="457.0" layoutY="219.0" mnemonicParsing="false" onAction="#BrowsPicture" text="Brows" />
+      <Label fx:id="ifPicture" layoutX="422.0" layoutY="280.0" prefHeight="18.0" prefWidth="117.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/freesia_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="62.0" layoutX="56.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="76.0" layoutX="340.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icn_afficher.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="verif" layoutX="274.0" layoutY="444.0" prefHeight="18.0" prefWidth="226.0" />
    </children>
 </AnchorPane>

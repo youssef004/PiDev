@@ -5,7 +5,7 @@
  */
 package Service;
 
-import Entity.User;
+import Entity.membre;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,9 +27,9 @@ public class ServiceUser {
             System.out.println(ex);  
         }
     }
-     public void AjouterUser( User u) throws SQLException {
+     public void AjouterUser( membre u) throws SQLException {
          
-        String requete="INSERT INTO `user` (`Cin`, `LastName`, `FirstName`, `Email`, `Address`, `Number`, `Login`, `Mdp`, `Country`, `City`, `CodePostal`) VALUES ('"+NULL+"', '"+u.getLasteName()+"', '"+u.getFirstName()+"', '"+u.getEmail()+"', '"+u.getAddress()+"','"+u.getNumber()+"', '"+u.getLogin()+"', '"+u.getMdp()+"', '"+u.getCountry()+"', '"+u.getCity()+"', '"+u.getCodePostal()+"');";
+        String requete="INSERT INTO `membre` (`Cin`, `LastName`, `FirstName`, `Email`, `Address`, `Number`, `Login`, `Mdp`, `Country`, `City`, `CodePostal`) VALUES ('"+NULL+"', '"+u.getLasteName()+"', '"+u.getFirstName()+"', '"+u.getEmail()+"', '"+u.getAddress()+"','"+u.getNumber()+"', '"+u.getLogin()+"', '"+u.getMdp()+"', '"+u.getCountry()+"', '"+u.getCity()+"', '"+u.getCodePostal()+"');";
            
         //String requete = "INSERT INTO `user` (`Cin`, `LastName`, `FirstName`, `Email`, `Address`, `Number`, `Login`, `Mdp`, `Country`, `City`, `CodePostal`) VALUES ('"+NULL+"', '"+u.getLasteName()+"', '"+u.getFirstName()+"', '"+u.getEmail()+"', '"+u.getAddress()+"', '"+u.getNumber()+"', '"+u.getLogin()+"', '"+u.getMdp()+"','"+u.getCountry()+"','"+u.getCity()+"''"+u.getCodePostal()+"');";
          ste.executeUpdate(requete);
@@ -49,11 +49,11 @@ public class ServiceUser {
   
     
     }
-     public User getUserByEmail(String Email) throws SQLException{
-         String req="SELECT * FROM `user` WHERE `Email` LIKE '"+Email+"' ";
+     public membre getUserByEmail(String Email) throws SQLException{
+         String req="SELECT * FROM `membre` WHERE `Email` LIKE '"+Email+"' ";
          Statement s = con.createStatement();
          ResultSet rs = s.executeQuery(req);
-         User u = new User();
+         membre u = new membre();
          if(rs.next()){
              u.setCin(rs.getInt("Cin"));
              u.setLasteName(rs.getString("LastName"));

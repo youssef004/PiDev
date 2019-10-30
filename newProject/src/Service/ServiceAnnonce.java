@@ -7,8 +7,10 @@ package Service;
 import java.sql.*;
 //import cactus.Cactus;
 import Entity.Annonce;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import utils.ConnexionBD;
 
 /**
@@ -79,6 +81,18 @@ public class ServiceAnnonce {
          }
          return u;
      }
+
+     public List<Annonce> filtreAnnonce(String s) throws SQLException {
+        List<Annonce> annonce = new ArrayList<>();
+        String requette = "select * from annonce where IdAnnonce like'%"+s+"%' or DescriptionAnnonce like'%"+s+"%' or DateAnnonce like'%"+s+"%' or TitreAnnoce like'%"+s+"%' or Picture like'%"+s+"%'";
+         Statement st = con.createStatement();
+         ResultSet rst = st.executeQuery(requette);
+      while (rst.next()) {
+            Annonce pl=new Annonce(rst.getInt("IdAnnonce"),rst.getString("DescriptionAnnonce"),rst.getDate("DateAnnonce"),rst.getString("TitreAnnoce"),rst.getString("Picture"));
+            annonce.add(pl);
+        }
+    return annonce;
+    }
      
    
      }
