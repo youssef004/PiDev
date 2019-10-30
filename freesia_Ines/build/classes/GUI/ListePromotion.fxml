@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListePromotionController">
+   <children>
+      <Label fx:id="tflistpromotion" layoutX="279.0" layoutY="14.0" text="Promotions List">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="listePromotion" layoutX="27.0" layoutY="90.0" prefHeight="200.0" prefWidth="711.0">
+        <columns>
+          <TableColumn fx:id="comumnid" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="columnpercentage" prefWidth="87.0" text="Percentage" />
+            <TableColumn fx:id="columnstartdate" prefWidth="87.0" text="Start Date" />
+            <TableColumn fx:id="columnenddate" prefWidth="77.0" text="End Date" />
+            <TableColumn fx:id="columnstate" prefWidth="96.0" text="State " />
+            <TableColumn fx:id="columnperiod" prefWidth="100.0" text="Period" />
+            <TableColumn fx:id="columndescription" prefWidth="198.0" text="Description" />
+        </columns>
+      </TableView>
+      <Label fx:id="nombrepromotion" layoutX="64.0" layoutY="69.0" prefHeight="16.0" prefWidth="20.0" text="?" textFill="#4a2323">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="60.0" prefHeight="38.0" prefWidth="165.0" text="Promotional Products">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="638.0" layoutY="410.0" mnemonicParsing="false" onAction="#supprimerPromotion" prefHeight="25.0" prefWidth="96.0" text="Delete" />
+      <TextField fx:id="tfiddelete" layoutX="459.0" layoutY="410.0" />
+      <Label layoutX="356.0" layoutY="407.0" prefHeight="32.0" prefWidth="26.0" text="ID">
+         <font>
+            <Font name="Symbol" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="356.0" layoutY="350.0" prefHeight="32.0" prefWidth="149.0" text="search with">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="combosearchpromotion" layoutX="458.0" layoutY="354.0" prefWidth="150.0" />
+      <Button layoutX="638.0" layoutY="354.0" mnemonicParsing="false" onAction="#rechercherPromotion" prefHeight="25.0" prefWidth="96.0" text="Search" />
+      <Button fx:id="tfreturn" layoutX="638.0" layoutY="309.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="25.0" prefWidth="96.0" text="Cancel" />
+      <Button layoutX="459.0" layoutY="309.0" mnemonicParsing="false" onAction="#reafficherlistepromotion" prefHeight="25.0" prefWidth="149.0" text="refrech" />
+   </children>
+</AnchorPane>

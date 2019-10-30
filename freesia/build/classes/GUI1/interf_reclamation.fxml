@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI1.Interf_reclamationController">
+   <children>
+      <Label layoutX="257.0" layoutY="26.0" text="Reclamation" />
+      <Button layoutX="483.0" layoutY="320.0" mnemonicParsing="false" onAction="#retour1" text="retour" />
+      <TableView fx:id="tftableview" layoutX="116.0" layoutY="50.0" prefHeight="200.0" prefWidth="375.0">
+        <columns>
+          <TableColumn fx:id="tfIdReclamation" prefWidth="75.0" text="IdReclamation" />
+          <TableColumn fx:id="tfSubjectReclamation" prefWidth="75.0" text="SubjectReclamation" />
+            <TableColumn fx:id="tfDescriptionReclamation" prefWidth="75.0" text="DescriptionReclamation" />
+            <TableColumn fx:id="tfDateReclamation" prefWidth="75.0" text="DateReclamation" />
+            <TableColumn fx:id="tfStateReclamation" prefWidth="75.0" text="StateReclamation" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

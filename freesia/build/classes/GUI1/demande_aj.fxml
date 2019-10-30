@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="718.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI1.Demande_ajController">
+   <children>
+      <TableView fx:id="tftableview_user" layoutX="14.0" layoutY="67.0" onMouseClicked="#state" prefHeight="200.0" prefWidth="678.0">
+        <columns>
+          <TableColumn fx:id="tfCinUser" prefWidth="75.0" text="Cin" />
+          <TableColumn fx:id="tfLastNUser" prefWidth="75.0" text="LastName" />
+            <TableColumn fx:id="tfFirstNUser" prefWidth="75.0" text="FirstName" />
+            <TableColumn fx:id="tfEmailUser" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="tfAddressUser" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="tfNumberUser" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="tfLoginUser" prefWidth="75.0" text="Login" />
+            <TableColumn fx:id="tfMdpUser" prefWidth="75.0" text="Mdp" />
+            <TableColumn fx:id="tfStateu" prefWidth="75.0" text="State" />
+        </columns>
+      </TableView>
+      <Label layoutX="240.0" layoutY="26.0" text="La liste des personnes" />
+      <Button layoutX="544.0" layoutY="333.0" mnemonicParsing="false" onAction="#retourdemande_user" text="retour" />
+   </children>
+</AnchorPane>

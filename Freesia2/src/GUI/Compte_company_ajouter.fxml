@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="tf" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Compte_company_ajouterController">
+   <children>
+      <ImageView fitHeight="452.0" fitWidth="653.0" layoutX="-1.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../View/feuille.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="tfcompte_compagnir_ajouter" layoutY="145.0" prefHeight="92.0" prefWidth="584.0" text="Vous avez ajouté un nouveau compte pour votre pepinière" textFill="#f2eded">
+         <font>
+            <Font name="Baskerville Old Face" size="24.0" />
+         </font></Label>
+      <Button layoutX="231.0" layoutY="292.0" mnemonicParsing="false" onAction="#retour_ajout_company" prefHeight="25.0" prefWidth="121.0" text="Retour" />
+   </children>
+</AnchorPane>

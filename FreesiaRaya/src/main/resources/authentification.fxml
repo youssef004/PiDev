@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AuthentificationController">
+   <children>
+      <ImageView fitHeight="424.0" fitWidth="727.0" layoutX="-66.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@View/plantes-depolluantes.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfLogin" layoutX="179.0" layoutY="55.0" />
+      <Label layoutX="73.0" layoutY="59.0" prefHeight="17.0" prefWidth="64.0" text="LOG IN:" />
+      <Label layoutX="79.0" layoutY="156.0" text="Password:" />
+      <Button layoutX="346.0" layoutY="261.0" mnemonicParsing="false" onAction="#connexion" text="connect" />
+      <Label fx:id="tf_mdp_incorrect" layoutX="40.0" layoutY="320.0" prefHeight="17.0" prefWidth="157.0" />
+      <PasswordField fx:id="tfpassword" layoutX="180.0" layoutY="152.0" />
+   </children>
+</AnchorPane>

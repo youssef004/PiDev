@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="458.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterPromotionFXMLController">
+   <children>
+      <Label layoutX="241.0" layoutY="71.0" text="ID" />
+      <Label layoutX="237.0" layoutY="118.0" text="Description Promotion" />
+      <Label layoutX="241.0" layoutY="161.0" text="Percentage Promotion" />
+      <Label layoutX="244.0" layoutY="211.0" text="Start Date" />
+      <Label layoutX="246.0" layoutY="257.0" text="End Date" />
+      <Label layoutX="245.0" layoutY="299.0" text="State Promotion" />
+      <Label layoutX="247.0" layoutY="333.0" text="period" />
+      <TextField fx:id="tfid" layoutX="401.0" layoutY="67.0" onKeyPressed="#showPromotion" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfdescription" layoutX="401.0" layoutY="114.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfpercentage" layoutX="401.0" layoutY="157.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfperiod" layoutX="401.0" layoutY="329.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="tfstartdate" layoutX="401.0" layoutY="207.0" />
+      <DatePicker fx:id="tfenddate" layoutX="401.0" layoutY="253.0" />
+      <Button layoutX="360.0" layoutY="381.0" mnemonicParsing="false" onAction="#ajouterPromotion" prefHeight="25.0" prefWidth="94.0" text="Add" />
+      <Label layoutX="26.0" layoutY="17.0" text="On Discount" />
+      <Label layoutX="80.0" layoutY="43.0" text="Promotional Products" />
+      <Label fx:id="tfsetstate" layoutX="141.0" layoutY="80.0" prefHeight="25.0" prefWidth="87.0" text="State Promotion" />
+      <Label layoutX="395.0" layoutY="17.0" text="Sorted by: " />
+      <ComboBox fx:id="tfstate" layoutX="401.0" layoutY="295.0" onAction="#ajouterPromotion" prefHeight="25.0" prefWidth="174.0" />
+      <Button layoutX="481.0" layoutY="381.0" mnemonicParsing="false" onAction="#afficherListePromotion" prefHeight="25.0" prefWidth="94.0" text="Display" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../wamp/www/freesiaImage/f1.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="238.0" layoutY="381.0" mnemonicParsing="false" onAction="#modifierPromotion" prefHeight="25.0" prefWidth="94.0" text="Update" />
+   </children>
+</AnchorPane>
