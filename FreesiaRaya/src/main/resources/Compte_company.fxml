@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="tfCompte_company" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Company_addController">
+   <children>
+      <ImageView fitHeight="429.0" fitWidth="637.0" layoutX="-18.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@View/cactus.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfnomcompany" layoutX="226.0" layoutY="94.0" />
+      <TextField fx:id="tfemailcompany" layoutX="226.0" layoutY="141.0" promptText="prenom@example.com" />
+      <TextField fx:id="tfnumerocompany" layoutX="226.0" layoutY="233.0" />
+      <TextField fx:id="tfadressecompany" layoutX="221.0" layoutY="282.0" prefHeight="25.0" prefWidth="157.0" />
+      <Label layoutX="58.0" layoutY="98.0" text="Nom de votre pepinière:" textFill="WHITE" />
+      <Label layoutX="62.0" layoutY="145.0" text="Email de votre compte:" textFill="WHITE" />
+      <Label layoutX="43.0" layoutY="199.0" prefHeight="17.0" prefWidth="166.0" text="Password pour votre compte:" textFill="WHITE" />
+      <Label layoutX="43.0" layoutY="237.0" prefHeight="14.0" prefWidth="149.0" text="Numero de votre pepinière:" textFill="#fffafa" />
+      <Label layoutX="35.0" layoutY="286.0" prefHeight="17.0" prefWidth="166.0" text="Adresse de votre pepinière:" textFill="#f8f3f3" />
+      <Label layoutX="143.0" layoutY="14.0" prefHeight="34.0" prefWidth="347.0" text="Creation d'un compte pour votre pépinière ">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Button layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajoutcomptecompany" onKeyPressed="#gotoAjouter" prefHeight="25.0" prefWidth="157.0" text="Ajouter compte" />
+      <Button layoutX="221.0" layoutY="336.0" mnemonicParsing="false" onAction="#suppcomptecompany" prefHeight="25.0" prefWidth="139.0" text="Supprimer" />
+      <Button layoutX="383.0" layoutY="336.0" mnemonicParsing="false" onAction="#modifcomptecompany" prefHeight="25.0" prefWidth="149.0" text="Modifier" />
+      <PasswordField fx:id="tfpswcompany" layoutX="226.0" layoutY="187.0" />
+   </children>
+</AnchorPane>

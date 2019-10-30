@@ -24,10 +24,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -57,6 +59,10 @@ public class AjouterPromotionFXMLController implements Initializable {
     private Label tfsetstate;
     List<Promotion> promotions;
     private Object servicePromotion;
+    @FXML
+    private ImageView image2;
+    @FXML
+    private Button tfpromotiontest;
 
     /**
      * Initializes the controller class.
@@ -72,26 +78,27 @@ public class AjouterPromotionFXMLController implements Initializable {
 
     @FXML
     private void ajouterPromotion(ActionEvent event) throws SQLException {
-        Promotion A = new Promotion();
-        A.setIdPromotion(Integer.valueOf(tfid.getText()));
-        A.setPercentagePromotion(Integer.valueOf(tfpercentage.getText()));
-        A.setDescriptionPromotion(tfdescription.getText());
-        A.setPeriod(tfperiod.getText());
+        Promotion p = new Promotion();
+        //p.setIdPromotion(Integer.valueOf(tfid.getText()));
+        p.setPercentagePromotion(Integer.valueOf(tfpercentage.getText()));
+        p.setDescriptionPromotion(tfdescription.getText());
+        p.setStartDate(Date.valueOf(tfstartdate.getValue()));
+        p.setEndDate(Date.valueOf(tfenddate.getValue()));
+         p.setPeriod(tfperiod.getText());
         /**
          * ***********ComboBox************
          */
 
-        A.setStatePromotion(tfstate.getValue());
+        p.setStatePromotion(tfstate.getValue());
         tfsetstate.setText(tfstate.getValue());
         /**
          * ***********ComboBox************
          */
+       
 
-        A.setStartDate(Date.valueOf(tfstartdate.getValue()));
-        A.setEndDate(Date.valueOf(tfenddate.getValue()));
         ServicePromotion sp = new ServicePromotion();
         try {
-            sp.ajouterPromotion1(A);
+            sp.ajouterPromotion1(p);
         } catch (SQLException ex) {
             Logger.getLogger(AjouterPromotionFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,7 +114,7 @@ public class AjouterPromotionFXMLController implements Initializable {
             Parent root1 = (Parent) fxmlLoader.load();
             ((Node) event.getSource()).getScene().getWindow().hide();
             Stage stage = new Stage();
-            stage.setTitle("ListePromotion");
+            //stage.setTitle("ListePromotion");
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (Exception ex) {
@@ -138,61 +145,61 @@ public class AjouterPromotionFXMLController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AjouterPromotionFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-      /* ServicePromotion sp = new ServicePromotion() ;
-        
-        
-       
-        Promotion p=new Promotion();
-        int Id=Integer.valueOf(tfid.getText());
-        p=sp.getPromotionById(Id);
-        tfdescription.setText(p.getDescriptionPromotion());
-        //Cdiscription11.setText(p.getDescriptionAnnonce());
-       // CPicture11.setText(p.getPicture());
-       // this.x=Id;*/
-      
-      Promotion A = new Promotion();
-      int Id=Integer.valueOf(tfid.getText());
-       // A.setIdPromotion(Integer.valueOf(tfid.getText()));
+
+        Promotion A = new Promotion();
+        int Id = Integer.valueOf(tfid.getText());
+        // A.setIdPromotion(Integer.valueOf(tfid.getText()));
         A.setPercentagePromotion(Integer.valueOf(tfpercentage.getText()));
         A.setDescriptionPromotion(tfdescription.getText());
-        A.setPeriod(tfperiod.getText());
+        //A.setPeriod(tfperiod.getText());
         /**
          * ***********ComboBox************
          */
 
-        A.setStatePromotion(tfstate.getValue());
-        tfsetstate.setText(tfstate.getValue());
+        //A.setStatePromotion(tfstate.getValue());
+        //tfsetstate.setText(tfstate.getValue());
         /**
          * ***********ComboBox************
          */
-        
-        A.setStartDate(Date.valueOf(tfstartdate.getValue()));
-        A.setEndDate(Date.valueOf(tfenddate.getValue()));
+
+       // A.setStartDate(Date.valueOf(tfstartdate.getValue()));
+        //A.setEndDate(Date.valueOf(tfenddate.getValue()));
         ServicePromotion sp = new ServicePromotion();
-        try {
-            System.out.println(Id);
-            
-            sp.modifierPromotion(Id);
-        } catch (SQLException ex) {
-            Logger.getLogger(AjouterPromotionFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println(Id);
+        sp.modifierPromotion1(Integer.valueOf(tfid.getText()),tfdescription.getText(),Integer.valueOf(tfpercentage.getText()),tfperiod.getText());
     }
 
     @FXML
     private void showPromotion(KeyEvent event) throws SQLException {
-        ServicePromotion sp = new ServicePromotion() ;
-        
-        
-       
-        Promotion p=new Promotion();
-        System.out.println("cc");
-        int Id=Integer.valueOf(tfid.getText());
-        //System.out.println(Id);
-        p=sp.getPromotionById(Id);
+        ServicePromotion sp = new ServicePromotion();
+
+        Promotion p = new Promotion();
+        int Id = Integer.valueOf(tfid.getText());
+        p = sp.getPromotionById(Id);
         tfdescription.setText(p.getDescriptionPromotion());
         //tfpercentage.setText(Integer.valueOf(tfpercentage.getText()));
+       int Percentage=Integer.valueOf(tfid.getText());
         //tfstartdate.setText(p.getStartDate());
         tfsetstate.setText(p.getStatePromotion());
         tfperiod.setText(p.getPeriod());
+        tfstate.setValue(p.getStatePromotion());
     }
+
+    @FXML
+    private void showlisteprixpromotion(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/CalculPromotion.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            tfpromotiontest.getScene().setRoot(root);
+            /*((Node) event.getSource()).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            //stage.setTitle("AjouterPromotion");
+            stage.setScene(new Scene(root));
+            stage.show();*/
+            
+        } catch (Exception ex) {
+            System.out.println("Cant load a new window");
+        }
+    }
+
 }

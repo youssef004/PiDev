@@ -5,58 +5,57 @@
  */
 package GUI;
 
-import entities.Plant;
-import java.io.File;
-import java.io.IOException;
+import Entity.Annonce;
 import java.net.URL;
+<<<<<<< HEAD
 import java.nio.file.Files;
 import java.sql.Connection;
 import static java.sql.Types.NULL;
+=======
+import java.sql.SQLException;
+>>>>>>> f4766cba4c60149a51e7389d848e3e8e4e410f97
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.activation.DataSource;
 import service.ServicePlant;
+=======
+>>>>>>> f4766cba4c60149a51e7389d848e3e8e4e410f97
 
 /**
  * FXML Controller class
  *
- * @author Youssef
+ * @author Oussama
  */
 public class AjouterController implements Initializable {
 
     @FXML
-    private AnchorPane tf_display;
+    private TextField TfNom;
     @FXML
-    private TextField tf_name;
+    private TextField TfAge;
     @FXML
-    private TextField tf_type;
+    private TextField TfNom1;
     @FXML
-    private TextField tf_category;
+    private TextField TfAge1;
     @FXML
-    private Spinner<Integer> tf_quantity;
+    private TextField TfAge2;
     @FXML
-    private TextField tf_price;
+    private TextField TfAge21;
     @FXML
-    private TextArea tf_description;
+    private TextField TfAge22;
     @FXML
-    private Button ConfirmerAjouterPlant;
+    private TextField TfAge23;
     @FXML
+<<<<<<< HEAD
     private Button clear_ajouter_plant;
     @FXML
     private Button tf_photo_ajou;
@@ -78,12 +77,16 @@ public class AjouterController implements Initializable {
     private Text verif_quantity;
     @FXML
     private Text verif_picture;
+=======
+    private TextField TfNom11;
+>>>>>>> f4766cba4c60149a51e7389d848e3e8e4e410f97
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
         initSpinner();
     }
 
@@ -201,6 +204,18 @@ public class AjouterController implements Initializable {
     private void initSpinner() {
         tf_quantity.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
+=======
+        // TODO
+    }    
+
+    @FXML
+    private void ajouterPersonne(ActionEvent event) {
+        Annonce p=new Annonce();
+        p.setDescriptionAnnonce(TfNom.getText());
+        p.setIdAnnoce(Integer.valueOf(TfAge.getText()));
+        
+        
+>>>>>>> f4766cba4c60149a51e7389d848e3e8e4e410f97
     }
 
 }

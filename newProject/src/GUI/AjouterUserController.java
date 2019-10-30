@@ -5,11 +5,13 @@
  */
 package GUI;
 
-import Entity.User;
+import Entity.Menbrecurrent;
+import Entity.membre;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import Service.ServiceUser;
 import static Service.ServiceUser.isInteger;
+import Service.servicecurrent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -61,94 +63,113 @@ public class AjouterUserController implements Initializable {
     private TextField tfNumber;
     @FXML
     private Label verif;
+    @FXML
+    private Label verifPass;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-      
-           
-           
-       }
+
+    }
+    /* else if (!mdp1.equals(mdp2)) {
+            verif.setText("verify you password");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } */
 
     @FXML
-    private void AjouterUser(ActionEvent event) throws SQLException, IOException{
+    private void AjouterUser(ActionEvent event) throws SQLException, IOException {
+         Service.servicecurrent s = new servicecurrent();
+          ServiceUser us = new ServiceUser();
+      
         Pattern p = Pattern.compile(
-           "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-           "\\@" +
-           "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-           "(" +
-           "\\." +
-           "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-           ")+"
-       );
+                "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"
+                + "\\@"
+                + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"
+                + "("
+                + "\\."
+                + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"
+                + ")+"
+        );
         Pattern p1 = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(tfEmail.getText());
         Matcher m1 = p1.matcher(tfNumber.getText());
+        Pattern Pnumberpass = Pattern.compile("[a-z].*[0-9]");
+        Matcher mnumberpass = Pnumberpass.matcher(tfPassword.getText());
         String mdp1 = tfPassword.getText();
+        int lenghtmdp = mdp1.length();
         String mdp2 = tfConfirm.getText();
         Matcher m2 = p1.matcher(tfPostal.getText());
-        if(!m.find()){
-           verif.setText("this is not a email");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(tfLastName.getText().equals("")){
-           verif.setText("Last Name is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(tfFirstName.getText().equals("")){
-           verif.setText("First Name is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(tfAdresse.getText().equals("")){
-           verif.setText("Adresse is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(tfCity.getText().equals("")){
-           verif.setText("City");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(tfcountry.getText().equals("")){
-           verif.setText("country is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-           //((tfNumber.getText().equals("")) 
-       }else if(tfNumber.getText().equals("")){
-           verif.setText("number is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-        }else if(!m1.find()){
-           verif.setText("enter a number");
-           verif.setStyle("-fx-text-fill: #ff1744");
-           }else if(tfPostal.getText().equals("")){
-           verif.setText("Code Postal is empty");
-           verif.setStyle("-fx-text-fill: #ff1744");
-       }else if(!mdp1.equals(mdp2)){
-           verif.setText("verify you password");
-           verif.setStyle("-fx-text-fill: #ff1744");          
-       }else if(!m2.find()){
-           verif.setText("verify you Code postal");
-           verif.setStyle("-fx-text-fill: #ff1744"); 
-           }else {
-        User u=new User();
-        u.setLasteName(tfLastName.getText());
-        u.setFirstName(tfFirstName.getText());
-        u.setAddress(tfAdresse.getText());
-        u.setNumber(Integer.valueOf(tfNumber.getText()));
-        u.setLogin(tfEmail.getText());
-        u.setEmail(tfEmail.getText());
-        u.setCin(NULL);
-        u.setCity(tfCity.getText());
-        u.setCountry(tfcountry.getText());
-        u.setMdp(tfPassword.getText());
-        u.setCodePostal(Integer.valueOf(tfPostal.getText()));
-        ServiceUser SU=null;
-        SU=new ServiceUser();
-        SU.AjouterUser(u);
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-       }
+       
+      if (!m.find()) {
+            verif.setText("this is not a email");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfLastName.getText().equals("")) {
+            verif.setText("Last Name is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfFirstName.getText().equals("")) {
+            verif.setText("First Name is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfAdresse.getText().equals("")) {
+            verif.setText("Adresse is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfCity.getText().equals("")) {
+            verif.setText("City");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfcountry.getText().equals("")) {
+            verif.setText("country is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+            //((tfNumber.getText().equals("")) 
+        } else if (tfNumber.getText().equals("")) {
+            verif.setText("number is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (!m1.find()) {
+            verif.setText("enter a number");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (tfPostal.getText().equals("")) {
+            verif.setText("Code Postal is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } 
+         else if(!mnumberpass.find()){
+            verif.setText("you need number to get Password");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        }
+       else if (!tfPassword.getText().equals(tfConfirm.getText())) {
+            verif.setText("the password not equals");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else if (!m2.find()) {
+            verif.setText("verify you Code postal");
+            verif.setStyle("-fx-text-fill: #ff1744");
+        } else {
+            membre u = new membre();
+           // Menbrecurrent d = new Menbrecurrent(s.getUserByEmail(tfEmail.getText()));
+            u.setLasteName(tfLastName.getText());
+            u.setFirstName(tfFirstName.getText());
+            u.setAddress(tfAdresse.getText());
+            u.setNumber(Integer.valueOf(tfNumber.getText()));
+            u.setLogin(tfEmail.getText());
+            u.setEmail(tfEmail.getText());
+            u.setCin(NULL);
+            u.setCity(tfCity.getText());
+            u.setCountry(tfcountry.getText());
+            u.setMdp(tfPassword.getText());
+            u.setCodePostal(Integer.valueOf(tfPostal.getText()));
+            ServiceUser SU = null;
+            SU = new ServiceUser();
+            SU.AjouterUser(u);
+            Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Menbrecurrent d = new Menbrecurrent(s.getUserByEmail(tfEmail.getText()));
+        }
     }
 
     @FXML
@@ -160,7 +181,38 @@ public class AjouterUserController implements Initializable {
         stage.show();
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
+    private int verifPassword() {
+        Pattern Pnumberpass = Pattern.compile("[a-z].*[0-9]");
+        Matcher mnumberpass = Pnumberpass.matcher(tfPassword.getText());
+        String mdp1 = tfPassword.getText();
+        int lenghtmdp = mdp1.length();
+        System.out.println(lenghtmdp);
+        if (mdp1.equals("")) {
+            verif.setText("your password is empty");
+            verif.setStyle("-fx-text-fill: #ff1744");
+            return 1;
+        } else if (!mnumberpass.find()) {
+            verif.setText("your password don't containt number");
+            verif.setStyle("-fx-text-fill: #ff1744");
+            return 1;
+        } else if (lenghtmdp <= 8 == true) {
+            verif.setText("your password is failed ");
+            verif.setStyle("-fx-text-fill: #ff1744");
+            return 1;
+
+        } else {
+            verif.setText("your password is Strong");
+            verif.setStyle("-fx-text-fill: #0000ff");
+            return 0;
+        }
         
-    
-    
+
+    }
+
+    @FXML
+    private void verif(ActionEvent event) {
+        verifPassword();
+    }
+
 }
