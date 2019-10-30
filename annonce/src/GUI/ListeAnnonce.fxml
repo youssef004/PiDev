@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onDragDetected="#showAnnonce" prefHeight="724.0" prefWidth="1017.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeAnnonceController">
+    <stylesheets>
+        <URL value="@listeannonce.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="722.0" fitWidth="1020.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>       
+      <TableView fx:id="liste" layoutX="15.0" layoutY="196.0" onMouseClicked="#Modifier2Annonce" onMousePressed="#ModifierAnnonce" prefHeight="414.0" prefWidth="620.0">
+        <columns>
+          <TableColumn fx:id="CDescription" prefWidth="256.0" text="Description" />
+            <TableColumn fx:id="CTitre" prefWidth="120.0" text="Titre" />
+            <TableColumn fx:id="CDate" prefWidth="124.0" text="Date" />
+            <TableColumn fx:id="CPicture" prefWidth="122.0" text="Picture" />
+        </columns>
+      </TableView>
+      <Button fx:id="gotoAjouter" layoutX="183.0" layoutY="634.0" mnemonicParsing="false" onAction="#gotoAjouter" prefHeight="26.0" prefWidth="84.0" text="Ajouter">
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor></Button>
+      <Label fx:id="TestLabel" layoutX="521.0" layoutY="401.0" prefHeight="18.0" prefWidth="107.0" />
+      <Button layoutX="63.0" layoutY="632.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="30.0" prefWidth="75.0" scaleShape="false" text="back">
+         <cursor>
+            <Cursor fx:constant="W_RESIZE" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <Button layoutX="325.0" layoutY="633.0" mnemonicParsing="false" onAction="#Deletefromtree" prefHeight="26.0" prefWidth="75.0" text="Delete" />
+      <Label fx:id="verif" focusTraversable="false" layoutX="655.0" layoutY="387.0" prefHeight="18.0" prefWidth="107.0" text="New Description" />
+      <TextField fx:id="Cdiscription11" focusTraversable="false" layoutX="776.0" layoutY="383.0" prefHeight="26.0" prefWidth="159.0" />
+      <TextField fx:id="Ctitre11" focusTraversable="false" layoutX="776.0" layoutY="426.0" prefHeight="26.0" prefWidth="159.0" />
+      <TextField fx:id="CPicture11" focusTraversable="false" layoutX="775.0" layoutY="519.0" prefHeight="26.0" prefWidth="137.0" />
+      <DatePicker fx:id="CDate11" focusTraversable="false" layoutX="776.0" layoutY="470.0" prefHeight="26.0" prefWidth="159.0" />
+      <Button focusTraversable="false" layoutX="772.0" layoutY="596.0" mnemonicParsing="false" onAction="#Updatefinal" prefHeight="26.0" prefWidth="167.0" text="Update" />
+      <Label fx:id="verif1" focusTraversable="false" layoutX="667.0" layoutY="522.0" prefHeight="18.0" prefWidth="107.0" text="New Picture" />
+      <Label fx:id="verif11" focusTraversable="false" layoutX="664.0" layoutY="474.0" prefHeight="18.0" prefWidth="107.0" text="New Date" />
+      <Label fx:id="verif111" focusTraversable="false" layoutX="664.0" layoutY="430.0" prefHeight="18.0" prefWidth="107.0" text="New Titre" />
+      <Button focusTraversable="false" layoutX="912.0" layoutY="519.0" mnemonicParsing="false" onAction="#browseP" prefHeight="25.0" prefWidth="16.0" text="..." />
+      <TextField fx:id="rechercherfiled" layoutX="145.0" layoutY="162.0" onKeyReleased="#rechercherAnnonce" prefHeight="26.0" prefWidth="354.0" promptText="--   search" />
+      <Button layoutX="471.0" layoutY="634.0" mnemonicParsing="false" onAction="#exporttoexcell" prefHeight="26.0" prefWidth="75.0" text="Export" />
+      <ImageView fx:id="imageview" fitHeight="289.0" fitWidth="261.0" layoutX="664.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="40.0" fitWidth="60.0" layoutX="43.0" layoutY="626.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="75.0" layoutX="163.0" layoutY="626.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="326.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/freesia_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="56.0" layoutX="756.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon-modify.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="295.0" layoutY="626.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_search.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ad979303" height="289.0" layoutX="669.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="254.0" />
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="445.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_excel.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="last" layoutX="640.0" layoutY="343.0" prefHeight="18.0" prefWidth="335.0" />
+   </children>
+</AnchorPane>
