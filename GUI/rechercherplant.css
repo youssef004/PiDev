@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.table-view {
+    -fx-table-color: -light-secondary-color;
+    -fx-table-rippler-color: rgba(82, 100, 174, 0.6);
+}

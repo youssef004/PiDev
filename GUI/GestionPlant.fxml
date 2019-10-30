@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="0.0" prefWidth="604.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GestionPlantController">
+    <stylesheets>
+        <URL value="@gestionplant.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="background_gestion_plant" fitHeight="374.0" fitWidth="604.0" layoutY="4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="AjouterPlant" layoutX="70.0" layoutY="107.0" mnemonicParsing="false" onAction="#AjouterPlant" prefHeight="54.0" prefWidth="210.0" text="Add Plant">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="RechercherPlant" layoutX="368.0" layoutY="107.0" mnemonicParsing="false" onAction="#RechercherPlant" prefHeight="44.0" prefWidth="210.0" text="Search Plant">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="RetourGestionProduit" layoutX="32.0" layoutY="334.0" mnemonicParsing="false" onAction="#RetourGestionProduit" prefHeight="27.0" prefWidth="94.0" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="AfficherStockPlant" layoutX="242.0" layoutY="245.0" mnemonicParsing="false" onAction="#AfficherStockPlant" prefHeight="54.0" prefWidth="139.0" text="Stock">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="85.0" fitWidth="79.0" layoutX="316.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="79.0" layoutX="31.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="79.0" layoutX="177.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_stock.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="7.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="119.0" layoutX="7.0" layoutY="3.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/freesia_logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
