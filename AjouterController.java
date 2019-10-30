@@ -5,158 +5,58 @@
  */
 package GUI;
 
-import entities.Plant;
-import java.io.File;
-import java.io.IOException;
+import Entity.Annonce;
 import java.net.URL;
-import java.nio.file.Files;
-import static java.sql.Types.NULL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import service.ServicePlant;
 
 /**
  * FXML Controller class
  *
- * @author Youssef
+ * @author Oussama
  */
 public class AjouterController implements Initializable {
 
     @FXML
-    private AnchorPane tf_display;
+    private TextField TfNom;
     @FXML
-    private TextField tf_name;
+    private TextField TfAge;
     @FXML
-    private TextField tf_type;
+    private TextField TfNom1;
     @FXML
-    private TextField tf_category;
+    private TextField TfAge1;
     @FXML
-    private Spinner<Integer> tf_quantity;
+    private TextField TfAge2;
     @FXML
-    private TextField tf_price;
+    private TextField TfAge21;
     @FXML
-    private TextArea tf_description;
+    private TextField TfAge22;
     @FXML
-    private Button ConfirmerAjouterPlant;
+    private TextField TfAge23;
     @FXML
-    private Button clear_ajouter_plant;
-    @FXML
-    private Button tf_photo_ajou;
-    @FXML
-    private Text tf_Picture;
-    @FXML
-    private Button RetourGestionPlant;
+    private TextField TfNom11;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initSpinner();
+        // TODO
     }    
 
     @FXML
-    private void ConfirmerAjouterPlant(ActionEvent event) {
-          System.out.println("user");
+    private void ajouterPersonne(ActionEvent event) {
+        Annonce p=new Annonce();
+        p.setDescriptionAnnonce(TfNom.getText());
+        p.setIdAnnoce(Integer.valueOf(TfAge.getText()));
         
-       Plant p = new Plant();
-       p.setNamePlant(tf_name.getText());
-       p.setTypePlant(tf_type.getText());
-     
-       tf_quantity.setEditable(true);
-      p.setQuantityPlant(tf_quantity.getValue());
-      
-       p.setCategoryPlant(tf_category.getText());
-     p.setPricePlant(Integer.valueOf(tf_price.getText()));
-       p.setPicturePlant(tf_Picture.getText());
-       p.setDescriptionPlant(tf_description.getText());
-       p.setIdPlant(NULL);
- 
-       ServicePlant PS=null;
-       PS = new ServicePlant();
-       PS.ajouterPlant(p);
-                 
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Produit enregistré avec succès.");
-        alert.setHeaderText(null);
-        alert.setContentText("Le produit "+p.getNamePlant()+ " a été créé.");
-        alert.showAndWait();
-         if (tf_name.getText().length()==0 || tf_type.getText().length()==0 || tf_description.getText().length()==0){
-         
-           alert.setTitle("veuillez remplir!!");
-           alert.setHeaderText("WARNING !");
-           alert.setContentText("some field are empty !!");
-           alert.showAndWait();
-       } else {
-             
-           alert.setTitle("veuillez remplir!!");
-           alert.setHeaderText("Alert !");
-           alert.setContentText("Plant has been added!");
-           alert.showAndWait();
-       }
-         
-       
-    }
-
-    @FXML
-    private void clear_ajouter_plant(ActionEvent event) {
-           tf_name.clear();
-        tf_type.clear();
-        tf_category.clear();
-        tf_price.clear();
-      //  tf_quantity.clear;
-        tf_description.clear();
-        System.out.println("tests");
-    }
-
-    @FXML
-    private void tf__attach_Picture(ActionEvent event) {
-        Stage primary = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Selectionner une image");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-        File file = fileChooser.showOpenDialog(primary);   
-        String path="C:\\wamp64\\www";
-        tf_Picture.setText(file.getName());
-        if (file!= null){
-            try {
-               Files.copy(file.toPath(),new File(path+"\\"+file.getName()).toPath());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-    }
-    }
-
-    @FXML
-    private void RetourGestionPlant(ActionEvent event) throws IOException {
-          Parent root = FXMLLoader.load(getClass().getResource("GestionPlant.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
-    }
-
-    private void initSpinner() {
- tf_quantity.setValueFactory(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200));
+        
     }
     
 }
