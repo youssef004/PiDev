@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="458.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterPromotionFXMLController">
+   <children>
+      <ImageView fitHeight="480.0" fitWidth="948.0" layoutX="-19.0" layoutY="-12.0" pickOnBounds="true">
+         <image>
+            <Image url="@../FreesiaImage/background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="241.0" layoutY="71.0" text="ID" />
+      <Label layoutX="241.0" layoutY="118.0" text="Description Promotion" />
+      <Label layoutX="241.0" layoutY="161.0" text="Percentage Promotion" />
+      <Label layoutX="244.0" layoutY="211.0" text="Start Date" />
+      <Label layoutX="246.0" layoutY="257.0" text="End Date" />
+      <Label layoutX="245.0" layoutY="299.0" text="State Promotion" />
+      <Label layoutX="247.0" layoutY="333.0" text="period" />
+      <TextField fx:id="tfid" layoutX="401.0" layoutY="67.0" onKeyPressed="#showPromotion" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfdescription" layoutX="401.0" layoutY="114.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfpercentage" layoutX="401.0" layoutY="157.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tfperiod" layoutX="401.0" layoutY="329.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="tfstartdate" layoutX="401.0" layoutY="207.0" />
+      <DatePicker fx:id="tfenddate" layoutX="401.0" layoutY="253.0" />
+      <Button layoutX="631.0" layoutY="231.0" mnemonicParsing="false" onAction="#ajouterPromotion" prefHeight="34.0" prefWidth="108.0" text="             Add" />
+      <Label layoutX="14.0" layoutY="4.0" prefHeight="30.0" prefWidth="138.0" text="On Discount" textFill="#c944a3">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="29.0" layoutY="34.0" prefHeight="34.0" prefWidth="224.0" text="Promotional Products" textFill="#c944a3">
+         <font>
+            <Font name="Lucida Fax Regular" size="18.0" />
+         </font></Label>
+      <Label fx:id="tfsetstate" layoutX="69.0" layoutY="76.0" prefHeight="25.0" prefWidth="167.0" text="State Promotion" textFill="#688d25">
+         <font>
+            <Font name="Lucida Fax Regular" size="19.0" />
+         </font></Label>
+      <ComboBox fx:id="tfstate" layoutX="401.0" layoutY="295.0" onAction="#ajouterPromotion" prefHeight="25.0" prefWidth="174.0" />
+      <Button layoutX="635.0" layoutY="42.0" mnemonicParsing="false" onAction="#afficherListePromotion" prefHeight="34.0" prefWidth="100.0" text="          Display" />
+      <Button layoutX="631.0" layoutY="138.0" mnemonicParsing="false" onAction="#modifierPromotion" prefHeight="34.0" prefWidth="108.0" text="           Update" />
+      <Separator layoutX="601.0" layoutY="16.0" orientation="VERTICAL" prefHeight="409.0" prefWidth="12.0" />
+      <Button fx:id="tfpromotiontest" layoutX="646.0" layoutY="325.0" mnemonicParsing="false" onAction="#showlisteprixpromotion" prefHeight="34.0" prefWidth="100.0" text="Promotion" />
+      <ImageView fitHeight="135.0" fitWidth="200.0" layoutX="21.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/f1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image2" fitHeight="126.0" fitWidth="200.0" layoutX="21.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/f2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="53.0" layoutX="619.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/73390763_818694795216360_1997353177837469696_n.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="624.0" layoutY="423.0" mnemonicParsing="false" onAction="#bajouterPromotion" prefHeight="34.0" prefWidth="108.0" text="           Back" />
+      <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="621.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icn_afficher.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="621.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icon-modify.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="53.0" layoutX="612.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icon_back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

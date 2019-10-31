@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="573.0" prefWidth="885.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierLivraisonController">
+    <stylesheets>
+        <URL value="@modifierlivraison.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="573.0" fitWidth="935.0" pickOnBounds="true">
+         <image>
+            <Image url="@../FreesiaImage/background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="159.0" text="ID" />
+      <Label layoutX="175.0" layoutY="202.0" text="Description" />
+      <Label layoutX="177.0" layoutY="249.0" text="State" />
+      <TextField fx:id="tfidmodif" layoutX="290.0" layoutY="155.0" />
+      <TextField fx:id="tfdescriptionmodif" layoutX="290.0" layoutY="198.0" />
+      <TextField fx:id="tfstatemodif" layoutX="290.0" layoutY="237.0" />
+      <Button layoutX="338.0" layoutY="307.0" mnemonicParsing="false" onAction="#modifColumn" prefHeight="40.0" prefWidth="101.0" text="Update" />
+      <Button layoutX="338.0" layoutY="380.0" mnemonicParsing="false" onAction="#returndelivery" prefHeight="40.0" prefWidth="101.0" text="Back" />
+      <ImageView fitHeight="70.0" fitWidth="191.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true">
+         <image>
+            <Image url="@../FreesiaImage/freesia_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="109.0" layoutX="297.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icon-modify.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="290.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icon_back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="656.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GestionLivraisonController">
+    <stylesheets>
+        <URL value="@gestionlivraison.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="566.0" fitWidth="674.0" layoutX="-12.0" layoutY="-23.0" pickOnBounds="true">
+         <image>
+            <Image url="@../FreesiaImage/background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="234.0" layoutY="153.0" prefHeight="49.0" prefWidth="214.0" text="Let's start delivery" textFill="#119a2c">
+         <font>
+            <Font name="Matura MT Script Capitals" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="120.0" fitWidth="342.0" layoutX="218.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/livraison.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="127.0" layoutY="215.0" mnemonicParsing="false" onAction="#manageDelivery" prefHeight="55.0" prefWidth="397.0" text="Manage Delivery" textFill="#119a2c">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="133.0" layoutY="309.0" mnemonicParsing="false" onAction="#listGelivery" prefHeight="55.0" prefWidth="397.0" text="Delivery History" textFill="#119a2c">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="133.0" layoutY="398.0" mnemonicParsing="false" onAction="#mapDelivery" prefHeight="65.0" prefWidth="397.0" text="Follow Delivery" textFill="#119a2c">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="518.0" layoutY="483.0" mnemonicParsing="false" onAction="#backHomePage" prefHeight="36.0" prefWidth="131.0" text="      Back" textFill="#119a2c">
+         <font>
+            <Font name="Matura MT Script Capitals" size="19.0" />
+         </font></Button>
+      <ImageView fitHeight="76.0" fitWidth="181.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../FreesiaImage/freesia_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="58.0" layoutX="506.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../FreesiaImage/icon_back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
