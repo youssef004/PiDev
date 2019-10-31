@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" onMouseEntered="#ajouterDonner" prefHeight="591.0" prefWidth="756.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherPlantRechercherController">
+    <stylesheets>
+        <URL value="@afficherplantrechercher.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="614.0" fitWidth="756.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/background.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tf_name" layoutX="127.0" layoutY="88.0" />
+      <Text layoutX="33.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Plant" />
+      <Text layoutX="29.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type Plant" />
+      <TextField fx:id="tf_type" layoutX="127.0" layoutY="142.0" />
+      <Text layoutX="30.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity Plant" />
+      <Text layoutX="28.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category Plant " />
+      <TextField fx:id="tf_category" layoutX="127.0" layoutY="233.0" />
+      <Text layoutX="28.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price Plant " />
+      <Spinner fx:id="tf_quantity" layoutX="127.0" layoutY="182.0" />
+      <TextField fx:id="tf_price" layoutX="127.0" layoutY="281.0" prefHeight="25.0" prefWidth="149.0" />
+      <Text fill="#280606" layoutX="276.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DT" wrappingWidth="23.701171875" />
+      <Text layoutX="22.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description Plant " />
+      <TextArea fx:id="tf_description" layoutX="128.0" layoutY="381.0" prefHeight="169.0" prefWidth="439.0" />
+      <Text layoutX="29.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Picture Plant " />
+      <Button fx:id="ModifierPhoto" layoutX="127.0" layoutY="325.0" mnemonicParsing="false" onAction="#ModifierPhoto" prefHeight="25.0" prefWidth="149.0" text="Attach Picture" />
+      <Button fx:id="ModifierPlant" layoutX="648.0" layoutY="37.0" mnemonicParsing="false" onAction="#ModifierPlant" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: a5e7b3;" text="Modify" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="PartagerPlant" layoutX="644.0" layoutY="126.0" mnemonicParsing="false" onAction="#PartagerPlant" prefHeight="37.0" prefWidth="102.0" text="Share">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="RetourRechercherPlant" layoutX="652.0" layoutY="535.0" mnemonicParsing="false" onAction="#RetourRechercherPlant" prefHeight="25.0" prefWidth="93.0" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text fx:id="tf_Picture" layoutX="286.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="149.0" />
+      <Separator layoutX="580.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="606.0" prefWidth="31.0" />
+      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="618.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon-modify.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="618.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_facebok.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="200.0" layoutX="355.0" layoutY="77.0" stroke="BLACK" strokeType="INSIDE" width="210.0" />
+      <ImageView fitHeight="46.0" fitWidth="49.0" layoutX="621.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tf_image_view" fitHeight="193.0" fitWidth="210.0" layoutX="351.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="59.0" fitWidth="119.0" layoutX="4.0" layoutY="1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/freesia_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="129.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/icon_attach.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
