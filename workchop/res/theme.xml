@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+    <image name="activation-background.jpg"  />
+    <image name="fplantes.jpg"  />
+    <image name="news-item-2.jpg"  />
+    <image name="news-item-3.jpg"  />
+    <image name="news-item-4.jpg"  />
+    <image name="news-item.jpg" type="multi"  />
+    <image name="news-tab-down-arrow-black.png"  />
+    <image name="news-tab-down-arrow.png" type="multi"  />
+    <image name="news-tab-down.png" type="multi"  />
+    <image name="on-off-off.png" type="multi"  />
+    <image name="on-off-on.png" type="multi"  />
+    <image name="plante11.jpg"  />
+    <image name="profile-background.jpg"  />
+    <image name="profile-pic.jpg" type="multi"  />
+    <image name="rest1.jpg"  />
+    <image name="rest2.jpg"  />
+    <image name="rest3.jpg"  />
+    <image name="rest4.jpg"  />
+    <image name="signin-background.jpg"  />
+    <image name="signup-background.jpg"  />
+    <image name="smily.png" type="multi"  />
+    <image name="timeline-background.jpg"  />
+    <image name="twitter-logo.png" type="multi"  />
+    <image name="welcome-background.jpg"  />
+    <image name="welcome-slide-1.png" type="multi"  />
+    <image name="welcome-slide-2.png" type="multi"  />
+    <image name="welcome-slide-3.png" type="multi"  />
+</resource>
