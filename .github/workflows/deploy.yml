@@ -1,0 +1,39 @@
+name: Déploiements WP-next
+
+on:
+  workflow_dispatch:
+   # inputs:
+     # branch:
+      #  description: 'Branche release ou feature/hotfix'
+      #  required: true
+      #  default: 'release' 
+
+jobs:
+  deploy-preprod:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.branch == 'release'
+    steps:
+      - name: SSH-Connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "Successfully executed ssh connection"
+
+      - name: Deploy-WP-next-preprod
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ls
+            cd /app/client/nextmobiles-preprod/wp-content/plugins/ydu_nxt
+            ls -lrth
+            git config --global --add safe.directory /app/client/nextmobiles-preprod/wp-content/plugins/ydu_nxt
+            git pull origin release
+
