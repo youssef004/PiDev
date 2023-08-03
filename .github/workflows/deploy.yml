@@ -1,12 +1,12 @@
-name: Déploiements WP-next
+name: Deploiements-test
 
 on:
   workflow_dispatch:
-   # inputs:
-     # branch:
-      #  description: 'Branche release ou feature/hotfix'
-      #  required: true
-      #  default: 'release' 
+    inputs:
+      branch:
+        description: 'Branche release ou feature/hotfix'
+        required: true
+        default: 'release' 
 
 jobs:
   deploy-preprod:
@@ -32,8 +32,48 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ls
-            cd /app/client/nextmobiles-preprod/wp-content/plugins/ydu_nxt
+            cd /app/client/
             ls -lrth
-            git config --global --add safe.directory /app/client/nextmobiles-preprod/wp-content/plugins/ydu_nxt
+        
             git pull origin release
 
+  deploy-dev-local:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.inputs.branch, 'feature/') || startsWith(github.event.inputs.branch, 'hotfix/')
+    steps:
+      - name: Vérifier la branche
+        run: echo "La branche de déploiement est ${{ github.event.inputs.branch }}"
+
+      - name: Déploiement sur Dev-Local
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ls
+            cd /app/client/
+            ls -lrth
+            git pull 
+
+  deploy-dev-dev:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.branch == 'dev'
+    steps:
+      - name: Vérifier la branche
+        run: echo "La branche de déploiement est ${{ github.event.inputs.branch }}"
+
+      - name: Déploiement sur Dev-dev
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ls
+            cd /app/client
+            ls -lrth
+            git pull 
+  
